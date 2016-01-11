@@ -1,4 +1,4 @@
-# [BuildersRecords API] (http://www.api.buildersrecords.com)
+# [BuildersRecords API] (http://api.buildersrecords.com)
 
 Backend API for BuildersRecords apps.
 
