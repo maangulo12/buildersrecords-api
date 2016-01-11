@@ -16,6 +16,7 @@
         -Flask-Mail       : http://pythonhosted.org/Flask-Mail/
         -Flask-Migrate    : http://flask-migrate.readthedocs.org/en/latest/
         -Flask-Script     : http://flask-script.readthedocs.org/en/latest/
+        -Flask-Cors       : http://flask-cors.readthedocs.org/en/latest/
         -Stripe           : https://stripe.com/docs/api/python
 """
 
@@ -28,6 +29,7 @@ from flask.ext.restless import APIManager
 from flask_mail import Mail
 from flask.ext.migrate import Migrate
 from flask.ext.script import Manager
+from flask.ext.cors import CORS
 
 
 # Create Flask application
@@ -47,6 +49,7 @@ restless = APIManager(app, flask_sqlalchemy_db=db)
 mail     = Mail(app)
 migrate  = Migrate(app, db)
 manager  = Manager(app)
+cors     = CORS(app)
 
 # Models
 from app import models
