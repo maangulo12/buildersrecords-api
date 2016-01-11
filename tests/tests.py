@@ -38,11 +38,11 @@ class AppTestCase(unittest.TestCase):
         print(current_app)
         self.assertFalse(current_app is None)
 
-    def test_home_page(self):
-        print('TEST: test_home_page')
-        response = self.client.get('/')
-        print(response.status_code)
-        self.assertTrue(response.status_code == 200)
+    # def test_home_page(self):
+    #     print('TEST: test_home_page')
+    #     response = self.client.get('/')
+    #     print(response.status_code)
+    #     self.assertTrue(response.status_code == 200)
 
     def test_api(self):
         print('TEST: test_api')
