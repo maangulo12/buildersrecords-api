@@ -21,7 +21,7 @@ $environ = 'buildersrecords-api'
 Vagrant.configure(2) do |config|
     # Download Ubuntu for this VM
     config.vm.box = 'ubuntu/trusty64'
-    # Set the hostname of this VM to $environ variable
+    # Set the hostname of this VM
     config.vm.hostname = $environ
     # Use VirtualBox as the provider for this VM
     config.vm.provider :virtualbox do |v|
@@ -32,7 +32,7 @@ Vagrant.configure(2) do |config|
     # Open 5432 port of this VM to communicate with 5432 port of my local PC
     # PostgreSQL (database) port
     config.vm.network :forwarded_port, guest: 5432, host: 5432
-    # Open 5555 port of this VM to communicate with 5555 port of my local PC
+    # Open 4444 port of this VM to communicate with 4444 port of my local PC
     # Flask (application) port
     config.vm.network :forwarded_port, guest: 4444, host: 4444
 end
