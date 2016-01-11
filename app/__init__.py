@@ -59,3 +59,8 @@ from app.api import uploads
 
 # RESTless API
 from app.api import models
+
+# Views
+@app.route('/')
+def index():
+    return render_template('index.html')
