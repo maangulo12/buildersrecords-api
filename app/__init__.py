@@ -20,7 +20,7 @@
 """
 
 import stripe
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask.ext.bcrypt import Bcrypt
 from flask_restful import Api
