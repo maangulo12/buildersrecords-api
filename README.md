@@ -41,7 +41,7 @@ $ python3 manage.py recreate
 $ python3 application.py    
 ```
 
-#### Open [http://localhost:5555] (http://localhost:5555)
+#### Open [http://localhost:4444] (http://localhost:4444)
 
 ## VM
 
