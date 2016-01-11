@@ -24,9 +24,7 @@ STRIPE_API_KEY = os.environ.get('STRIPE_API_KEY',
     'sk_test_N625XoY2OXkrQzpDiRg7tt1g')
 
 # Auth
-AUTH_HEADER_PREFIX = 'Bearer'
-AUTH_VERIFY_EXP    = False
-AUTH_SECRET        = os.environ.get('AUTH_SECRET', 'secret')
+AUTH_SECRET = os.environ.get('AUTH_SECRET', 'secret')
 
 # Email
 MAIL_SERVER         = 'smtp.gmail.com'
