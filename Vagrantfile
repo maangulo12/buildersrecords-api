@@ -21,7 +21,7 @@ $environ = 'buildersrecords-api'
 Vagrant.configure(2) do |config|
     # Download Ubuntu for this VM
     config.vm.box = 'ubuntu/trusty64'
-    # Set the hostname of this VM to $environ variable
+    # Set the hostname of this VM
     config.vm.hostname = $environ
     # Use VirtualBox as the provider for this VM
     config.vm.provider :virtualbox do |v|
