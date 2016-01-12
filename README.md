@@ -2,6 +2,20 @@
 
 Backend API for BuildersRecords apps.
 
+## TO DO
+
++ Priorities:
+```
+    * Flask-Restful
+    * Security CORS, routes/endpoints
+    * Send Registration Email
+    * Flask-Admin
+    * Flask-Migrate / Alembic
+    * Sphinx Documentation
+    * Setup.py (look at uber's example)
+    * Flask-Testing (nose, unittest, doctest, pytests)
+```
+
 ## Required Software
 
 + [VirtualBox] (https://www.virtualbox.org/wiki/Downloads)

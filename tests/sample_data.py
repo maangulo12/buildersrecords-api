@@ -23,6 +23,13 @@ def populate_db():
 
     # Check if plans exist
     # stripe.Plan.create(
+    #     amount=0,
+    #     interval='monthly',
+    #     name='Free Plan',
+    #     currency='usd',
+    #     id='free'
+    # )
+    # stripe.Plan.create(
     #     amount=2500,
     #     interval='month',
     #     name='Monthly Plan',
