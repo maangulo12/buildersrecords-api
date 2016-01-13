@@ -7,16 +7,15 @@
     This API contains utility endpoints.
 
     Current endpoints:
-        -email          : /api/utility/email          (POST)
-        -username       : /api/utility/username       (POST)
-        -ubuildit/file  : /api/utility/ubuildit/parse (POST)
-        -ubuildit/parse : /api/utility/ubuildit/save  (POST)
+        -email          : /api/utility/email    (POST)
+        -username       : /api/utility/username (POST)
+        -ubuildit/file  : /api/utility/ubuildit (POST)
 """
 
-from flask import request, make_response, g
+from flask import request, make_response
 
 from app import app, db
-from app.models import User, Category, Item
+from app.models import User, Project, Category, Item
 from app.utility import parse_ubuildit_file
 
 
@@ -75,8 +74,8 @@ def verify_username():
         return make_response('Username already exists', 302)
 
 
-# Needs route protection
-@app.route(URL + '/ubuildit/parse', methods=['POST'])
+# Need route protection
+@app.route(URL + '/ubuildit', methods=['POST'])
 def parse_ubuildit_file():
     """
     Parses a UBuildIt Cost Review excel file.
@@ -84,51 +83,56 @@ def parse_ubuildit_file():
     Request Example:
     POST
     {
-        file : 'file' (FileStorage object)
+        file         : 'file' (FileStorage object)
+        name         : 'name'
+        address      : 'address'
+        city         : 'city'
+        state        : 'state'
+        zipcode      : 'zipcode'
+        home_sq      : 'home_sq'
+        project_type : 'project_type'
+        user_id      : 'user_id'
     }
     """
-    # get request size
-    file_obj  = request.files['file']
-    criterion = [file_obj]
+    # get length of request
+    file_obj     = request.files['file']
+    name         = request.form['name']
+    address      = request.form['address']
+    city         = request.form['city']
+    state        = request.form['state']
+    zipcode      = request.form['zipcode']
+    home_sq      = request.form['home_sq']
+    project_type = request.form['project_type']
+    user_id      = request.form['user_id']
+
+    criterion    = [file_obj, name, address, city, state, zipcode, home_sq,
+                    project_type, user_id]
 
     if not all(criterion):
         return make_response('Bad request', 400)
 
     try:
+        # Check for invalid file
         file_contents = file_obj.read()
-        g.data = parse_ubuildit_file(file_contents)
-        return make_response('The file is OK', 200)
+        category_list = parse_ubuildit_file(file_contents)
 
-    except:
-        return make_response('Incorrect file', 400)
-
-
-# Needs route protection
-@app.route(URL + '/ubuildit/save', methods=['POST'])
-def save_contents():
-    """
-    Save the contents of a UBuildIt Cost Review excel file.
-
-    Request Example:
-    POST
-    {
-        project_id : 'project id'
-    }
-    """
-    data       = request.get_json(force=True)
-    project_id = data.get('project_id', None)
-    criterion  = [project_id, len(data) == 1]
-
-    if not all(criterion):
-        return make_response('Bad request', 400)
-
-    try:
-        category_list = getattr(g, 'data', None)
+        project = Project(
+            name=name,
+            address=address,
+            city=city,
+            state=state,
+            zipcode=zipcode,
+            home_sq=home_sq,
+            project_type=project_type,
+            user_id=user_id
+        )
+        db.session.add(project)
+        db.session.commit()
 
         for cat in category_list:
             category = Category(
                 name=cat['category_name'],
-                project_id=project_id
+                project_id=project['id']
             )
             db.session.add(category)
             db.session.commit()
@@ -140,12 +144,12 @@ def save_contents():
                     estimated=cat_item['estimated'],
                     actual=cat_item['actual'],
                     category_id=category['id'],
-                    project_id=project_id
+                    project_id=project['id']
                 )
                 db.session.add(item)
                 db.session.commit()
 
-        return make_response('The contents of the file were saved', 200)
+        return make_response('The file was successfully parsed', 201)
 
     except:
-        return make_response('Could not save the contents of the file', 400)
+        return make_response('The file could not be parsed', 400)

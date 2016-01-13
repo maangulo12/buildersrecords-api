@@ -57,7 +57,6 @@ from app import models
 # RESTful API
 from app.api import auth
 from app.api import stripe
-from app.api import uploads
 from app.api import utility
 
 # RESTless API
