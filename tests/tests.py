@@ -47,10 +47,13 @@ class AppTestCase(unittest.TestCase):
     def test_api(self):
         print('TEST: test_api')
 
+        headers = { 'content-type': 'application/json' }
+
         print('POST /api/utility/email')
         response = self.client.post(
             '/api/utility/email',
-            data=json.dumps(dict(email='runtests@gmail.com'))
+            data=json.dumps(dict(email='runtests@gmail.com')),
+            headers=headers
         )
         print(response.status_code)
         self.assertTrue(response.status_code == 200)
@@ -58,7 +61,8 @@ class AppTestCase(unittest.TestCase):
         print('POST /api/utility/username')
         response = self.client.post(
             '/api/utility/username',
-            data=json.dumps(dict(username='runtests'))
+            data=json.dumps(dict(username='runtests')),
+            headers=headers
         )
         print(response.status_code)
         self.assertTrue(response.status_code == 200)
@@ -73,18 +77,34 @@ class AppTestCase(unittest.TestCase):
                 name='RUNTESTS'
             )
         )
-        print('Token ID: ' + token.id)
+        print('Token ID: ' + token['id'])
 
-        print('POST /api/subscriptions')
+        print('POST /api/stripe')
         response = self.client.post(
-            '/api/subscriptions',
+            '/api/stripe',
+            data=json.dumps(dict(
+                email='runtests@gmail.com',
+                plan='free',
+                token_id=token['id']
+            )),
+            headers=headers
+        )
+        print(response.status_code)
+        self.assertTrue(response.status_code == 201)
+
+        print('STORE Stripe ID')
+        data = json.loads(response.data)
+
+        print('POST /api/users')
+        response = self.client.post(
+            '/api/users',
             data=json.dumps(dict(
                 email='runtests@gmail.com',
                 username='runtests',
                 password='runtests',
-                plan='monthly',
-                token_id=token['id']
-            ))
+                stripe_id=data['id']
+            )),
+            headers=headers
         )
         print(response.status_code)
         self.assertTrue(response.status_code == 201)
@@ -92,7 +112,8 @@ class AppTestCase(unittest.TestCase):
         print('POST /api/utility/email (test 2)')
         response = self.client.post(
             '/api/utility/email',
-            data=json.dumps(dict(email='runtests@gmail.com'))
+            data=json.dumps(dict(email='runtests@gmail.com')),
+            headers=headers
         )
         print(response.status_code)
         self.assertTrue(response.status_code == 302)
@@ -100,7 +121,8 @@ class AppTestCase(unittest.TestCase):
         print('POST /api/utility/username (test 2)')
         response = self.client.post(
             '/api/utility/username',
-            data=json.dumps(dict(username='runtests'))
+            data=json.dumps(dict(username='runtests')),
+            headers=headers
         )
         print(response.status_code)
         self.assertTrue(response.status_code == 302)
@@ -113,17 +135,15 @@ class AppTestCase(unittest.TestCase):
             data=json.dumps(dict(
                 login='runtests',
                 password='runtests'
-            ))
+            )),
+            headers=headers
         )
         print(response.status_code)
         self.assertTrue(response.status_code == 200)
 
         print('STORE Json Web Token')
         data = json.loads(response.data.decode('utf-8'))
-        headers = {
-            'authorization': 'Bearer ' + data['token'],
-            'content-type':  'application/json'
-        }
+        headers['authorization'] = 'Bearer ' + data['token']
 
         print('GET /api/users/1')
         response = self.client.get(
