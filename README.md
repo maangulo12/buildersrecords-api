@@ -6,9 +6,9 @@ Backend API for BuildersRecords apps.
 
 + Priorities:
 ```
+    * Send Registration Email
     * Flask-Restful
     * Security CORS, routes/endpoints
-    * Send Registration Email
     * Flask-Admin
     * Flask-Migrate / Alembic
     * Sphinx Documentation
