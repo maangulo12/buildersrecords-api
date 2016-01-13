@@ -21,7 +21,6 @@ FILE_PATH = 'tests/data/spreadsheet.xlsx'
 def populate_db():
     client = app.test_client()
 
-    # Check if plans exist
     # stripe.Plan.create(
     #     amount=0,
     #     interval='monthly',
@@ -44,7 +43,6 @@ def populate_db():
     #     id='yearly'
     # )
 
-    #
     token = stripe.Token.create(
         card=dict(
             number=4242424242424242,
@@ -55,15 +53,29 @@ def populate_db():
         )
     )
 
+    headers = { 'content-type': 'application/json' }
+
     response = client.post(
-        '/api/subscriptions',
+        '/api/stripe',
+        data=json.dumps(dict(
+            email='test@gmail.com',
+            plan='free',
+            token_id=token['id']
+        )),
+        headers=headers
+    )
+
+    data = json.loads(response.data)
+
+    response = client.post(
+        '/api/users',
         data=json.dumps(dict(
             email='test@gmail.com',
             username='test',
             password='test',
-            plan='monthly',
-            token_id=token['id']
-        ))
+            stripe_id=data['id']
+        )),
+        headers=headers
     )
 
     response = client.post(
@@ -75,10 +87,7 @@ def populate_db():
     )
 
     data = json.loads(response.data)
-    headers = {
-        'authorization': 'Bearer ' + data['token'],
-        'content-type':  'application/json'
-    }
+    headers['authorization'] = 'Bearer ' + data['token']
 
     client.post(
         '/api/projects',

@@ -7,7 +7,7 @@
     This API is used for authentication.
 
     Current endpoints:
-        -auth : /api/auth          (POST)
+        -auth : /api/auth (POST)
 """
 
 import jwt
