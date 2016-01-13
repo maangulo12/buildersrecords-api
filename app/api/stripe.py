@@ -1,54 +1,42 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-    app.api.subscriptions
-    ~~~~~~~~~~~~~~~~~~~~~
+    app.api.stripe
+    ~~~~~~~~~~~~~~
 
-    This API is used for subscriptions.
+    This API is used for connecting with Stripe.
 """
 
 import stripe
 from flask import request, make_response, jsonify
+from flask_mail import Message
 
-from app import app, db
-from app.models import User
+from app import app, mail
 
 
-URL = '/api/subscriptions'
+URL = '/api/stripe'
 
 
 @app.route(URL, methods=['POST'])
-def post_subscription():
+def create():
     """
-    Creates a subscription for the user.
+    Creates a Stripe subscription for the user.
 
     Request Example:
     POST
     {
         email    : 'email address'
-        username : 'username'
-        password : 'password'
         plan     : 'subscription plan'
         token_id : 'stripe card token id'
     }
     """
     data      = request.get_json(force=True)
     email     = data.get('email', None)
-    username  = data.get('username', None)
-    password  = data.get('password', None)
     plan      = data.get('plan', None)
     token_id  = data.get('token_id', None)
-    criterion = [email,
-                username,
-                password,
-                plan,
-                token_id,
-                len(data) == 5,
-                len(email) <= 50,
-                4 <= len(username) <= 30]
+    criterion = [email, plan, token_id, len(data) == 3]
 
     if not all(criterion):
-        print('ERROR 404: Bad request')
         return make_response('Bad request', 400)
 
     try:
@@ -57,48 +45,36 @@ def post_subscription():
             plan=plan,
             source=token_id
         )
-        user = User(
-            email=email,
-            username=username,
-            password=password,
-            stripe_id=customer['id']
-        )
-        db.session.add(user)
-        db.session.commit()
-        return make_response('Customer succesfully subscribed', 201)
+        # msg = Message('Thank you from BuildersRecords', recipients=[email])
+        # msg.html = render_template('mail/registration.html')
+        # mail.send(msg)
+        return make_response(jsonify(customer), 201)
 
     except stripe.error.CardError:
-        print('ERROR: Card declined')
         return make_response('Card declined', 400)
 
     except stripe.error.RateLimitError:
-        print('ERROR: Too many requests made to Stripe')
         return make_response('Too many requests made to Stripe', 400)
 
     except stripe.error.InvalidRequestError:
-        print('ERROR: Invalid parameters were supplied to Stripe')
         return make_response('Invalid parameters were supplied to Stripe', 400)
 
     except stripe.error.AuthenticationError:
-        print('ERROR: Authentication with Stripe failed')
         return make_response('Authentication with Stripe failed', 400)
 
     except stripe.error.APIConnectionError:
-        print('ERROR: Network communication with Stripe failed')
         return make_response('Network communication with Stripe failed', 400)
 
     except stripe.error.StripeError:
-        print('ERROR: Stripe Error')
         return make_response('Stripe Error', 400)
 
     except Exception:
-        print('ERROR: Error')
         return make_response('Error', 400)
 
 
 # Needs route security
 @app.route(URL + '/<stripe_id>', methods=['GET'])
-def get_subscription(stripe_id):
+def retrieve(stripe_id):
     """
     Get user data from Stripe.
     """
@@ -112,7 +88,7 @@ def get_subscription(stripe_id):
 
 # Needs route security
 @app.route(URL + '/<stripe_id>', methods=['PUT'])
-def put_subscription(stripe_id):
+def update(stripe_id):
     """
     Update user billing information in Stripe.
 
@@ -143,29 +119,22 @@ def put_subscription(stripe_id):
         return make_response(jsonify(customer), 200)
 
     except stripe.error.CardError:
-        print('ERROR: Card declined')
         return make_response('Card declined', 400)
 
     except stripe.error.RateLimitError:
-        print('ERROR: Too many requests made to Stripe')
         return make_response('Too many requests made to Stripe', 400)
 
     except stripe.error.InvalidRequestError:
-        print('ERROR: Invalid parameters were supplied to Stripe')
         return make_response('Invalid parameters were supplied to Stripe', 400)
 
     except stripe.error.AuthenticationError:
-        print('ERROR: Authentication with Stripe failed')
         return make_response('Authentication with Stripe failed', 400)
 
     except stripe.error.APIConnectionError:
-        print('ERROR: Network communication with Stripe failed')
         return make_response('Network communication with Stripe failed', 400)
 
     except stripe.error.StripeError:
-        print('ERROR: Stripe Error')
         return make_response('Stripe Error', 400)
 
     except Exception:
-        print('ERROR 404: Error')
         return make_response('Error', 400)
