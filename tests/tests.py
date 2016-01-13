@@ -47,17 +47,17 @@ class AppTestCase(unittest.TestCase):
     def test_api(self):
         print('TEST: test_api')
 
-        print('POST /api/auth/email')
+        print('POST /api/utility/email')
         response = self.client.post(
-            '/api/auth/email',
+            '/api/utility/email',
             data=json.dumps(dict(email='runtests@gmail.com'))
         )
         print(response.status_code)
         self.assertTrue(response.status_code == 200)
 
-        print('POST /api/auth/username')
+        print('POST /api/utility/username')
         response = self.client.post(
-            '/api/auth/username',
+            '/api/utility/username',
             data=json.dumps(dict(username='runtests'))
         )
         print(response.status_code)
@@ -89,17 +89,17 @@ class AppTestCase(unittest.TestCase):
         print(response.status_code)
         self.assertTrue(response.status_code == 201)
 
-        print('POST /api/auth/email (test 2)')
+        print('POST /api/utility/email (test 2)')
         response = self.client.post(
-            '/api/auth/email',
+            '/api/utility/email',
             data=json.dumps(dict(email='runtests@gmail.com'))
         )
         print(response.status_code)
         self.assertTrue(response.status_code == 302)
 
-        print('POST /api/auth/username (test 2)')
+        print('POST /api/utility/username (test 2)')
         response = self.client.post(
-            '/api/auth/username',
+            '/api/utility/username',
             data=json.dumps(dict(username='runtests'))
         )
         print(response.status_code)
