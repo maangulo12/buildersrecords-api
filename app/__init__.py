@@ -59,6 +59,7 @@ from app.api import auth
 from app.api import mail
 from app.api import subscriptions
 from app.api import uploads
+from app.api import utility
 
 # RESTless API
 from app.api import models
