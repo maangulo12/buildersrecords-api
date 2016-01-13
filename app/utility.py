@@ -56,6 +56,8 @@ def parse_ubuildit_file(data):
     wb = open_workbook(file_contents=data)
     ws = wb.sheet_by_name('UBI Cost Review')
 
+    print('MADE IT')
+
     category_list = []
     category_list.append({'category_name': ws.cell_value(5, 2),
                           'item_list':     get_item_list(ws, 6, 15)})

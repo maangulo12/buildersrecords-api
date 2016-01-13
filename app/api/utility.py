@@ -108,6 +108,9 @@ def parse_ubuildit_file():
     criterion    = [file_obj, name, address, city, state, zipcode, home_sq,
                     project_type, user_id]
 
+    print(name)
+    print(user_id)
+
     if not all(criterion):
         return make_response('Bad request', 400)
 
