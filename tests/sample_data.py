@@ -104,11 +104,11 @@ def populate_db():
         headers=headers
     )
 
-    f = open(FILE_PATH, 'rb')
-    contents = f.read()
-    data = parse_ubuildit_file(contents)
+    file_obj = open(FILE_PATH, 'rb')
+    file_contents = file_obj.read()
+    category_list = parse_ubuildit_file(file_contents)
 
-    for category in data:
+    for category in category_list:
         client.post(
             '/api/categories',
             data=json.dumps(dict(
@@ -126,7 +126,7 @@ def populate_db():
                     description=item['description'],
                     estimated=item['estimated'],
                     actual=item['actual'],
-                    category_id=data.index(category) + 1,
+                    category_id=category_list.index(category) + 1,
                     project_id=1
                 )),
                 headers=headers
@@ -182,8 +182,9 @@ def populate_db():
         headers=headers
     )
 
-    data = parse_invoice_file(FILE_PATH)
-    for expenditure in data:
+    expenditure_list = parse_invoice_file(FILE_PATH)
+
+    for expenditure in expenditure_list:
         fund_id = 1
         if expenditure['notes'] == 'Blanco':
             fund_id = 2
