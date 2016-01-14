@@ -21,7 +21,7 @@ URL = '/api/stripe'
 @app.route(URL, methods=['POST'])
 def create():
     """
-    Creates a Stripe subscription for the user.
+    Creates a Stripe subscription.
 
     Request Example:
     POST
@@ -89,7 +89,7 @@ def create():
 @app.route(URL + '/<stripe_id>', methods=['GET'])
 def retrieve(stripe_id):
     """
-    Get user data from Stripe.
+    Gets a Stripe subscription.
     """
     customer = stripe.Customer.retrieve(stripe_id)
 
@@ -103,7 +103,7 @@ def retrieve(stripe_id):
 @app.route(URL + '/<stripe_id>', methods=['PUT'])
 def update(stripe_id):
     """
-    Update user billing information in Stripe.
+    Updates a Stripe subscription.
 
     Request Example:
     PUT
