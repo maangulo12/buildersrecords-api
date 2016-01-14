@@ -108,22 +108,12 @@ def parse_file():
     criterion    = [file_obj, name, address, city, state, zipcode, home_sq,
                     project_type, user_id]
 
-    print(file_obj)
-    print(name)
-    print(address)
-    print(city)
-    print(state)
-    print(zipcode)
-    print(home_sq)
-    print(project_type)
-    print(user_id)
-
     if not all(criterion):
         return make_response('Bad request', 400)
 
     try:
-        # Check for invalid file
         file_contents = file_obj.read()
+        # Check for invalid file
         category_list = parse_ubuildit_file(file_contents)
         print(category_list)
 
@@ -143,7 +133,7 @@ def parse_file():
         for cat in category_list:
             category = Category(
                 name=cat['category_name'],
-                project_id=project['id']
+                project_id=project.id
             )
             db.session.add(category)
             db.session.commit()
@@ -154,8 +144,8 @@ def parse_file():
                     description=cat_item['description'],
                     estimated=cat_item['estimated'],
                     actual=cat_item['actual'],
-                    category_id=category['id'],
-                    project_id=project['id']
+                    category_id=category.id,
+                    project_id=project.id
                 )
                 db.session.add(item)
                 db.session.commit()
