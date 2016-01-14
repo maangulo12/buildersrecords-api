@@ -124,8 +124,6 @@ def parse_file():
     try:
         # Check for invalid file
         file_contents = file_obj.read()
-        print(file_contents)
-        print(str(file_contents))
         category_list = parse_ubuildit_file(file_contents)
         print(category_list)
 
