@@ -108,7 +108,14 @@ def parse_ubuildit_file():
     criterion    = [file_obj, name, address, city, state, zipcode, home_sq,
                     project_type, user_id]
 
+    print(file_obj)
     print(name)
+    print(address)
+    print(city)
+    print(state)
+    print(zipcode)
+    print(home_sq)
+    print(project_type)
     print(user_id)
 
     if not all(criterion):
