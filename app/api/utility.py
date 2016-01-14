@@ -115,7 +115,6 @@ def parse_file():
         file_contents = file_obj.read()
         # Check for invalid file
         category_list = parse_ubuildit_file(file_contents)
-        print(category_list)
 
         project = Project(
             name=name,
