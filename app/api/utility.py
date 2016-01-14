@@ -76,7 +76,7 @@ def verify_username():
 
 # Need route protection
 @app.route(URL + '/ubuildit', methods=['POST'])
-def parse_ubuildit_file():
+def parse_file():
     """
     Parses a UBuildIt Cost Review excel file.
 
@@ -112,8 +112,8 @@ def parse_ubuildit_file():
         return make_response('Bad request', 400)
 
     try:
-        # Check for invalid file
         file_contents = file_obj.read()
+        # Check for invalid file
         category_list = parse_ubuildit_file(file_contents)
 
         project = Project(
@@ -132,7 +132,7 @@ def parse_ubuildit_file():
         for cat in category_list:
             category = Category(
                 name=cat['category_name'],
-                project_id=project['id']
+                project_id=project.id
             )
             db.session.add(category)
             db.session.commit()
@@ -143,8 +143,8 @@ def parse_ubuildit_file():
                     description=cat_item['description'],
                     estimated=cat_item['estimated'],
                     actual=cat_item['actual'],
-                    category_id=category['id'],
-                    project_id=project['id']
+                    category_id=category.id,
+                    project_id=project.id
                 )
                 db.session.add(item)
                 db.session.commit()

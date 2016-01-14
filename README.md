@@ -6,7 +6,9 @@ Backend API for BuildersRecords apps.
 
 + Priorities:
 ```
-    * Send Registration Email
+    * Send Registration Email / Celery
+    * Utility UBuildit Upload / Check invalid file
+
     * Flask-Restful
     * Security CORS, routes/endpoints
     * Flask-Admin
