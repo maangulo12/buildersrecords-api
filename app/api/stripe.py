@@ -11,7 +11,8 @@ import stripe
 from flask import request, make_response, jsonify
 from flask_mail import Message
 
-from app import app, mail
+from app import app, db, mail
+from app.models import User
 
 
 URL = '/api/stripe'
@@ -26,15 +27,19 @@ def create():
     POST
     {
         email    : 'email address'
+        username : 'username'
+        password : 'password'
         plan     : 'subscription plan'
         token_id : 'stripe card token id'
     }
     """
     data      = request.get_json(force=True)
     email     = data.get('email', None)
+    username  = data.get('username', None)
+    password  = data.get('password', None)
     plan      = data.get('plan', None)
     token_id  = data.get('token_id', None)
-    criterion = [email, plan, token_id, len(data) == 3]
+    criterion = [email, username, password, plan, token_id, len(data) == 5]
 
     if not all(criterion):
         return make_response('Bad request', 400)
@@ -45,6 +50,14 @@ def create():
             plan=plan,
             source=token_id
         )
+        user = User(
+            email=email,
+            username=username,
+            password=password,
+            stripe_id=customer['id']
+        )
+        db.session.add(user)
+        db.session.commit()
         # msg = Message('Thank you from BuildersRecords', recipients=[email])
         # msg.html = render_template('mail/registration.html')
         # mail.send(msg)
@@ -105,7 +118,6 @@ def update(stripe_id):
     criterion = [stripe_id, token_id, len(data) == 2]
 
     if not all(criterion):
-        print('ERROR 404: Bad request')
         return make_response('Bad request', 400)
 
     try:
