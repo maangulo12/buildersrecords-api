@@ -59,21 +59,10 @@ def populate_db():
         '/api/stripe',
         data=json.dumps(dict(
             email='test@gmail.com',
-            plan='free',
-            token_id=token['id']
-        )),
-        headers=headers
-    )
-
-    data = json.loads(response.data)
-
-    response = client.post(
-        '/api/users',
-        data=json.dumps(dict(
-            email='test@gmail.com',
             username='test',
             password='test',
-            stripe_id=data['id']
+            plan='free',
+            token_id=token['id']
         )),
         headers=headers
     )

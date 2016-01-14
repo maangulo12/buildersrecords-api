@@ -84,25 +84,10 @@ class AppTestCase(unittest.TestCase):
             '/api/stripe',
             data=json.dumps(dict(
                 email='runtests@gmail.com',
-                plan='free',
-                token_id=token['id']
-            )),
-            headers=headers
-        )
-        print(response.status_code)
-        self.assertTrue(response.status_code == 201)
-
-        print('STORE Stripe ID')
-        data = json.loads(response.data)
-
-        print('POST /api/users')
-        response = self.client.post(
-            '/api/users',
-            data=json.dumps(dict(
-                email='runtests@gmail.com',
                 username='runtests',
                 password='runtests',
-                stripe_id=data['id']
+                plan='free',
+                token_id=token['id']
             )),
             headers=headers
         )
