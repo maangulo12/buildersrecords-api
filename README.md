@@ -6,12 +6,12 @@ Backend API for BuildersRecords apps.
 
 + Priorities:
 ```
-    * Send Registration Email / Celery
+    * Flask-Mail Send Registration Email / Celery
     * Utility UBuildit Upload / Check invalid file
 
+    * Flask-Admin
     * Flask-Restful
     * Security CORS, routes/endpoints
-    * Flask-Admin
     * Flask-Migrate / Alembic
     * Sphinx Documentation
     * Setup.py (look at uber's example)
