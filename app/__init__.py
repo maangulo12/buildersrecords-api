@@ -51,6 +51,9 @@ migrate  = Migrate(app, db)
 manager  = Manager(app)
 cors     = CORS(app)
 
+# Utils
+from app import utility
+
 # Models
 from app import models
 
