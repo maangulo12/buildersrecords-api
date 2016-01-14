@@ -76,7 +76,7 @@ def verify_username():
 
 # Need route protection
 @app.route(URL + '/ubuildit', methods=['POST'])
-def parse_ubuildit_file():
+def parse_file():
     """
     Parses a UBuildIt Cost Review excel file.
 
@@ -126,7 +126,7 @@ def parse_ubuildit_file():
         file_contents = file_obj.read()
         print(file_contents)
         print(str(file_contents))
-        category_list = parse_ubuildit_file(str(file_contents))
+        category_list = parse_ubuildit_file(file_contents)
         print(category_list)
 
         project = Project(
