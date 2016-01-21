@@ -8,6 +8,7 @@ Backend API for BuildersRecords apps.
 ```
     * Flask-Mail Send Registration Email / Celery
     * Utility UBuildit Upload / Check invalid file
+    * Version of API
 
     * Flask-Admin
     * Flask-Restful
