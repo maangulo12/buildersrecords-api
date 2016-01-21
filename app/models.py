@@ -123,7 +123,7 @@ class Expenditure(db.Model):
     cost          = db.Column(db.Numeric(12,2), nullable=False)
     fund_id       = db.Column(db.Integer, db.ForeignKey('funds.id'), nullable=False)
     category_id   = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
-    item_id       = db.Column(db.Integer, db.ForeignKey('items.id'))
+    item_id       = db.Column(db.Integer, db.ForeignKey('items.id'), nullable=False)
     project_id    = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=False)
     # image
 
