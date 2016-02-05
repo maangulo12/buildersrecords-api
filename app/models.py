@@ -119,7 +119,6 @@ class Expenditure(db.Model):
     id            = db.Column(db.Integer, primary_key=True)
     date          = db.Column(db.Date, nullable=False)
     vendor        = db.Column(db.String(50), nullable=False)
-    notes         = db.Column(db.String(80))
     cost          = db.Column(db.Numeric(12,2), nullable=False)
     fund_id       = db.Column(db.Integer, db.ForeignKey('funds.id'), nullable=False)
     category_id   = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)

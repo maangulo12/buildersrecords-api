@@ -183,7 +183,6 @@ def populate_db():
             data=json.dumps(dict(
                 date=expenditure['date'],
                 vendor=expenditure['vendor'],
-                notes=expenditure['description'],
                 cost=expenditure['cost'],
                 category_id=random.randint(1, 8),
                 item_id=random.randint(1, 110),
