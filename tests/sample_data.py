@@ -196,9 +196,9 @@ def populate_db():
     client.post(
         '/api/subcontractors',
         data=json.dumps(dict(
-            name='John Smith',
             company='84 Lumber',
-            contact_number='210-543-4534',
+            person='John Smith',
+            number='210-543-4534',
             project_id=1
         )),
         headers=headers
@@ -206,9 +206,9 @@ def populate_db():
     client.post(
         '/api/subcontractors',
         data=json.dumps(dict(
-            name='Shawn Tarver',
             company='Ez Company',
-            contact_number='512-586-6516',
+            person='Shawn Tarver',
+            number='512-586-6516',
             project_id=1
         )),
         headers=headers
@@ -216,9 +216,9 @@ def populate_db():
     client.post(
         '/api/subcontractors',
         data=json.dumps(dict(
-            name='Mike Jones',
             company='Coca Cola',
-            contact_number='210-253-5861',
+            person='Mike Jones',
+            number='210-253-5861',
             project_id=1
         )),
         headers=headers
