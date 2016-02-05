@@ -182,7 +182,7 @@ def populate_db():
             '/api/expenditures',
             data=json.dumps(dict(
                 date=expenditure['date'],
-                vendor=expenditure['vendor'],
+                company=expenditure['company'],
                 cost=expenditure['cost'],
                 category_id=random.randint(1, 8),
                 item_id=random.randint(1, 110),
