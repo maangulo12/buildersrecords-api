@@ -43,26 +43,36 @@ def populate_db():
     #     id='yearly'
     # )
 
-    token = stripe.Token.create(
-        card=dict(
-            number=4242424242424242,
-            exp_month=1,
-            exp_year=2025,
-            cvc=333,
-            name='TEST NAME'
-        )
-    )
+    # token = stripe.Token.create(
+    #     card=dict(
+    #         number=4242424242424242,
+    #         exp_month=1,
+    #         exp_year=2025,
+    #         cvc=333,
+    #         name='TEST NAME'
+    #     )
+    # )
 
     headers = { 'content-type': 'application/json' }
 
+    # response = client.post(
+    #     '/api/stripe',
+    #     data=json.dumps(dict(
+    #         email='test@gmail.com',
+    #         username='test',
+    #         password='test',
+    #         plan='free',
+    #         token_id=token['id']
+    #     )),
+    #     headers=headers
+    # )
+
     response = client.post(
-        '/api/stripe',
+        '/api/users',
         data=json.dumps(dict(
             email='test@gmail.com',
             username='test',
-            password='test',
-            plan='free',
-            token_id=token['id']
+            password='test'
         )),
         headers=headers
     )
