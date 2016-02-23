@@ -32,20 +32,20 @@ class User(db.Model):
     email         = db.Column(db.String(50), nullable=False, unique=True)
     username      = db.Column(db.String(30), nullable=False, unique=True)
     password      = db.Column(db.String, nullable=False)
-    stripe_id     = db.Column(db.String, nullable=False)
+    # stripe_id     = db.Column(db.String, nullable=False)
     date_created  = db.Column(db.TIMESTAMP, nullable=False)
-    active_until  = db.Column(db.TIMESTAMP, nullable=False)
+    # active_until  = db.Column(db.TIMESTAMP, nullable=False)
 
     projects = db.relationship('Project', backref='users')
 
-    def __init__(self, email, username, password, stripe_id):
+    def __init__(self, email, username, password):
         self.email        = email
         self.username     = username
         self.password     = bcrypt.generate_password_hash(password)
-        self.stripe_id    = stripe_id
+        # self.stripe_id    = stripe_id
         self.date_created = datetime.now()
         # Needs work - get date a month from today
-        self.active_until = datetime.now()
+        # self.active_until = datetime.now()
 
     def check_password(self, password):
         return bcrypt.check_password_hash(self.password, password)
