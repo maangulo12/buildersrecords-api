@@ -48,12 +48,13 @@ def authentication():
     # Check if account is active (active_until)
 
     if user and user.check_password(password):
-        token = jwt.encode(dict(
-            user_id=user.id,
-            stripe_id=user.stripe_id
-            ),
-            app.config['AUTH_SECRET']
-        )
+        # token = jwt.encode(dict(
+        #     user_id=user.id,
+        #     stripe_id=user.stripe_id
+        #     ),
+        #     app.config['AUTH_SECRET']
+        # )
+        token = jwt.encode(dict(user_id=user.id), app.config['AUTH_SECRET'])
         return make_response(jsonify(token=token), 200)
     else:
         return make_response('Unathenticated', 401)

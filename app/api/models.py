@@ -26,13 +26,13 @@ URL = '/api'
 
 
 # Users: /api/users
+# POST request is unprotected
 restless.create_api(User,
                        methods          = ['GET', 'POST', 'DELETE', 'PUT'],
                        url_prefix       = URL,
                        collection_name  = 'users',
                        results_per_page = 0,
                        preprocessors    = dict(
-                                          POST          = [verify_jwt],
                                           GET_SINGLE    = [verify_jwt],
                                           GET_MANY      = [verify_jwt],
                                           PUT_SINGLE    = [verify_jwt],

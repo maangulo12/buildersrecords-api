@@ -67,27 +67,40 @@ class AppTestCase(unittest.TestCase):
         print(response.status_code)
         self.assertTrue(response.status_code == 200)
 
-        print('Stripe Token')
-        token = stripe.Token.create(
-            card=dict(
-                number=4242424242424242,
-                exp_month=1,
-                exp_year=2025,
-                cvc=333,
-                name='RUNTESTS'
-            )
-        )
-        print('Token ID: ' + token['id'])
+        # print('Stripe Token')
+        # token = stripe.Token.create(
+        #     card=dict(
+        #         number=4242424242424242,
+        #         exp_month=1,
+        #         exp_year=2025,
+        #         cvc=333,
+        #         name='RUNTESTS'
+        #     )
+        # )
+        # print('Token ID: ' + token['id'])
 
-        print('POST /api/stripe')
+        # print('POST /api/stripe')
+        # response = self.client.post(
+        #     '/api/stripe',
+        #     data=json.dumps(dict(
+        #         email='runtests@gmail.com',
+        #         username='runtests',
+        #         password='runtests',
+        #         plan='free',
+        #         token_id=token['id']
+        #     )),
+        #     headers=headers
+        # )
+        # print(response.status_code)
+        # self.assertTrue(response.status_code == 201)
+
+        print('POST /api/users')
         response = self.client.post(
-            '/api/stripe',
+            '/api/users',
             data=json.dumps(dict(
                 email='runtests@gmail.com',
                 username='runtests',
-                password='runtests',
-                plan='free',
-                token_id=token['id']
+                password='runtests'
             )),
             headers=headers
         )
@@ -112,8 +125,6 @@ class AppTestCase(unittest.TestCase):
         print(response.status_code)
         self.assertTrue(response.status_code == 302)
 
-        # NEED MORE subscriptions tests
-
         print('POST /api/auth (authentication)')
         response = self.client.post(
             '/api/auth',
@@ -126,7 +137,7 @@ class AppTestCase(unittest.TestCase):
         print(response.status_code)
         self.assertTrue(response.status_code == 200)
 
-        print('STORE Json Web Token')
+        print('STORE JSON Web Token')
         data = json.loads(response.data.decode('utf-8'))
         headers['authorization'] = 'Bearer ' + data['token']
 
