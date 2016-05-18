@@ -1,6 +1,6 @@
 # [BuildersRecords API] (http://api.buildersrecords.com)
 
-Backend API for BuildersRecords apps.
+Business API for BuildersRecords clients.
 
 ## TO DO
 
