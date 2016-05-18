@@ -97,7 +97,7 @@ $ python3 manage.py db upgrade
 #### Extensions:
 + [Flask] (https://pypi.python.org/pypi/Flask) : A lightweight Python web framework.
 + [Flask-Bcrypt] (https://pypi.python.org/pypi/Flask-Bcrypt) : A Flask extension that provides bcrypt support for hashing passwords.
-+ [Flask-CORS] (https://pypi.python.org/pypi/Flask-Cors) : A Flask extension for handling Cross Origin Resource Sharing.
++ [Flask-Cors] (https://pypi.python.org/pypi/Flask-Cors) : A Flask extension for handling Cross Origin Resource Sharing.
 + [Flask-Mail] (https://pypi.python.org/pypi/Flask-Mail) : A Flask extension for sending email messages.
 + [Flask-Migrate] (https://pypi.python.org/pypi/Flask-Migrate) : A Flask extension for SQLAlchemy database migrations.
 + [Flask-Restless] (https://pypi.python.org/pypi/Flask-Restless) : A Flask extension for easy RESTful API generation.
