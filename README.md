@@ -48,7 +48,7 @@ $ vagrant ssh
 $ cd /vagrant/
 ```
 
-#### 6. Run app
+#### 6. Run the app
 >
 ```bash
 $ python3 manage.py recreate
