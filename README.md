@@ -94,6 +94,9 @@ $ python3 manage.py db migrate
 $ python3 manage.py db upgrade
 ```
 
+### Python Version:
++ Python [3.5.1] (https://www.python.org/downloads/)
+
 #### Extensions:
 + [Flask] (https://pypi.python.org/pypi/Flask) : A lightweight Python web framework.
 + [Flask-Bcrypt] (https://pypi.python.org/pypi/Flask-Bcrypt) : A Flask extension that provides bcrypt support for hashing passwords.
