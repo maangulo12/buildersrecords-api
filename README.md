@@ -16,12 +16,12 @@ Business API for BuildersRecords clients.
     * Flask-Testing (nose, unittest, doctest, pytests)
 ```
 
-## Required Software
+## To Contribute
+
+#### Download required software
 
 + [VirtualBox] (https://www.virtualbox.org/wiki/Downloads)
 + [Vagrant] (https://www.vagrantup.com/downloads.html)
-
-## For Development/Contribution
 
 #### Clone the project
 >
