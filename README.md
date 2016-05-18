@@ -96,7 +96,7 @@ $ python3 manage.py db upgrade
 
 ## Dependencies
 
-### Python Version:
+#### Python Version:
 + Python [3.5.1] (https://www.python.org/downloads/)
 
 #### Extensions:
