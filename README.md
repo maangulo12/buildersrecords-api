@@ -93,3 +93,6 @@ $ python3 manage.py db migrate
 # Upgrade database
 $ python3 manage.py db upgrade
 ```
+
+#### Extra Information:
++ [Alembic] (https://pypi.python.org/pypi/alembic/0.8.6) : Alembic is a database migrations tool.
