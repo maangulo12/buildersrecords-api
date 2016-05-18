@@ -2,14 +2,11 @@
 
 Business API for BuildersRecords clients.
 
-## TO DO
-
-+ Priorities:
+## To Do List
 ```
     * Flask-Mail Send Registration Email / Celery
     * Utility UBuildit Upload / Check invalid file
     * Version of API
-
     * Flask-Admin
     * Flask-Restful
     * Security CORS, routes/endpoints
@@ -24,7 +21,7 @@ Business API for BuildersRecords clients.
 + [VirtualBox] (https://www.virtualbox.org/wiki/Downloads)
 + [Vagrant] (https://www.vagrantup.com/downloads.html)
 
-## For Development
+## For Development/Contribution
 
 #### Clone the project
 >
@@ -39,7 +36,7 @@ $ cd buildersrecords-api
 $ vagrant up    
 ```
 
-#### SSH into the virtual machine (VM)
+#### SSH into the virtual machine
 >
 ```bash
 $ vagrant ssh
@@ -73,7 +70,7 @@ Password: password
 
 ## Database Migrations
 
-#### Read:
+#### Read
 + [Flask-Migrate: Documentation]
     (http://flask-migrate.readthedocs.org/en/latest/)
 + [Flask-Migrate: Miguel Grindberg]
@@ -81,7 +78,7 @@ Password: password
 + [Alembic Documentation]
     (http://alembic.readthedocs.org/en/latest/)
 
-#### Commands:
+#### Commands
 >
 ```bash
 # Create migrations folder
@@ -96,10 +93,10 @@ $ python3 manage.py db upgrade
 
 ## Dependencies
 
-#### Python Version:
+#### Python Version
 + Python [3.5.1] (https://www.python.org/downloads/)
 
-#### Extensions:
+#### Extensions
 + [Flask] (https://pypi.python.org/pypi/Flask) : A lightweight Python web framework.
 + [Flask-Bcrypt] (https://pypi.python.org/pypi/Flask-Bcrypt) : A Flask extension that provides bcrypt support for hashing passwords.
 + [Flask-Cors] (https://pypi.python.org/pypi/Flask-Cors) : A Flask extension for handling Cross Origin Resource Sharing.
