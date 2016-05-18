@@ -18,37 +18,37 @@ Business API for BuildersRecords clients.
 
 ## To Contribute
 
-#### Download required software
+#### 1. Download required software
 
 + [VirtualBox] (https://www.virtualbox.org/wiki/Downloads)
 + [Vagrant] (https://www.vagrantup.com/downloads.html)
 
-#### Clone the project
+#### 2. Clone the project
 >
 ```bash
 $ git clone git@github.com:maangulo12/buildersrecords-api.git
 $ cd buildersrecords-api
 ```
 
-#### Run vagrant
+#### 3. Run vagrant
 >
 ```bash
 $ vagrant up    
 ```
 
-#### SSH into the virtual machine
+#### 4. SSH into the virtual machine
 >
 ```bash
 $ vagrant ssh
 ```
 
-#### CD into the vagrant folder
+#### 5. CD into the vagrant folder
 >
 ```bash
 $ cd /vagrant/
 ```
 
-#### Run app
+#### 6. Run app
 >
 ```bash
 $ python3 manage.py recreate
@@ -57,9 +57,9 @@ $ python3 application.py
 
 #### Open [http://localhost:4444] (http://localhost:4444)
 
-## VM
+## PostgreSQL Database
 
-#### PostgreSQL Database Server on the VM
+#### Login Credentials
 ```
 Host: localhost
 Port: 5432
@@ -68,9 +68,7 @@ Username: postgres
 Password: password
 ```
 
-## Database Migrations
-
-#### Read
+#### Database Migrations
 + [Flask-Migrate: Documentation]
     (http://flask-migrate.readthedocs.org/en/latest/)
 + [Flask-Migrate: Miguel Grindberg]
@@ -78,7 +76,7 @@ Password: password
 + [Alembic Documentation]
     (http://alembic.readthedocs.org/en/latest/)
 
-#### Commands
+#### Database Migrations Commands
 >
 ```bash
 # Create migrations folder
@@ -91,7 +89,7 @@ $ python3 manage.py db migrate
 $ python3 manage.py db upgrade
 ```
 
-## Dependencies
+## Project Dependencies
 
 #### Python Version
 + Python [3.5.1] (https://www.python.org/downloads/)
