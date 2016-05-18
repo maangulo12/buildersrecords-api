@@ -55,7 +55,7 @@ $ python3 manage.py recreate
 $ python3 application.py    
 ```
 
-#### Open [http://localhost:4444] (http://localhost:4444)
+#### 7. Open [http://localhost:4444] (http://localhost:4444)
 
 ## PostgreSQL Database
 
@@ -76,7 +76,7 @@ Password: password
 + [Alembic Documentation]
     (http://alembic.readthedocs.org/en/latest/)
 
-#### Database Migrations Commands
+#### Commands for Database Migrations
 >
 ```bash
 # Create migrations folder
