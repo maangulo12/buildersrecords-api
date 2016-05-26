@@ -10,7 +10,6 @@
         python3 manage.py runtests
 """
 
-import stripe
 import unittest
 from flask import current_app, json
 
@@ -66,33 +65,6 @@ class AppTestCase(unittest.TestCase):
         )
         print(response.status_code)
         self.assertTrue(response.status_code == 200)
-
-        # print('Stripe Token')
-        # token = stripe.Token.create(
-        #     card=dict(
-        #         number=4242424242424242,
-        #         exp_month=1,
-        #         exp_year=2025,
-        #         cvc=333,
-        #         name='RUNTESTS'
-        #     )
-        # )
-        # print('Token ID: ' + token['id'])
-
-        # print('POST /api/stripe')
-        # response = self.client.post(
-        #     '/api/stripe',
-        #     data=json.dumps(dict(
-        #         email='runtests@gmail.com',
-        #         username='runtests',
-        #         password='runtests',
-        #         plan='free',
-        #         token_id=token['id']
-        #     )),
-        #     headers=headers
-        # )
-        # print(response.status_code)
-        # self.assertTrue(response.status_code == 201)
 
         print('POST /api/users')
         response = self.client.post(

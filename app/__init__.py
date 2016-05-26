@@ -6,21 +6,8 @@
     :copyright: (c) 2016
 
     This is the core package of this application.
-
-    Flask and extensions:
-        -Flask            : http://flask.pocoo.org/
-        -Flask-SQLAlchemy : http://flask-sqlalchemy.pocoo.org/2.1/
-        -Flask-Bcrypt     : http://flask-bcrypt.readthedocs.org/en/latest/
-        -Flask-Restful    : http://flask-restful.readthedocs.org/en/0.3.5/
-        -Flask-Restless   : http://flask-restless.readthedocs.org/en/latest/
-        -Flask-Mail       : http://pythonhosted.org/Flask-Mail/
-        -Flask-Migrate    : http://flask-migrate.readthedocs.org/en/latest/
-        -Flask-Script     : http://flask-script.readthedocs.org/en/latest/
-        -Flask-Cors       : http://flask-cors.readthedocs.org/en/latest/
-        -Stripe           : https://stripe.com/docs/api/python
 """
 
-import stripe
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask.ext.bcrypt import Bcrypt
@@ -37,9 +24,6 @@ app = Flask(__name__)
 
 # Configurations
 app.config.from_pyfile('settings.py')
-
-# Stripe
-stripe.api_key = app.config['STRIPE_API_KEY']
 
 # Extensions
 db       = SQLAlchemy(app)

@@ -6,7 +6,7 @@
 
     This module implements the database models of this application.
 
-    Current Models     Table Name
+        Models          Table Name
         -User          : users
         -Project       : projects
         -Category      : categories
@@ -16,7 +16,7 @@
         -Draw          : draws
         -Subcontractor : subcontractors
 
-    More Info:
+    For more information:
         -Flask-SQLAlchemy : http://flask-sqlalchemy.pocoo.org/2.0/api/
         -SQLAlchemy       : http://docs.sqlalchemy.org/en/latest/
 """
@@ -32,9 +32,7 @@ class User(db.Model):
     email         = db.Column(db.String(50), nullable=False, unique=True)
     username      = db.Column(db.String(30), nullable=False, unique=True)
     password      = db.Column(db.String, nullable=False)
-    # stripe_id     = db.Column(db.String, nullable=False)
     date_created  = db.Column(db.TIMESTAMP, nullable=False)
-    # active_until  = db.Column(db.TIMESTAMP, nullable=False)
 
     projects = db.relationship('Project', backref='users')
 
@@ -42,10 +40,7 @@ class User(db.Model):
         self.email        = email
         self.username     = username
         self.password     = bcrypt.generate_password_hash(password)
-        # self.stripe_id    = stripe_id
         self.date_created = datetime.now()
-        # Needs work - get date a month from today
-        # self.active_until = datetime.now()
 
     def check_password(self, password):
         return bcrypt.check_password_hash(self.password, password)
@@ -62,7 +57,6 @@ class Project(db.Model):
     home_sq       = db.Column(db.Integer, nullable=False)
     project_type  = db.Column(db.String(15), nullable=False)
     user_id       = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    # timestamp
 
     items          = db.relationship('Item', backref='projects')
     categories     = db.relationship('Category', backref='projects')
@@ -124,7 +118,6 @@ class Expenditure(db.Model):
     category_id   = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
     item_id       = db.Column(db.Integer, db.ForeignKey('items.id'), nullable=False)
     project_id    = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=False)
-    # image
 
 
 class Subcontractor(db.Model):

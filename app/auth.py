@@ -38,10 +38,6 @@ def verify_jwt(*args, **kwargs):
             current_app.config['AUTH_SECRET'],
             options=dict(verify_exp=False)
         )
-        # user = User.query.filter_by(
-        #     id=payload['user_id'],
-        #     stripe_id=payload['stripe_id']
-        # ).first()
         user = User.query.filter_by(id=payload['user_id']).first()
 
         if user is None:

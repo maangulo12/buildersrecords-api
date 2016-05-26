@@ -8,7 +8,6 @@
 """
 
 import random
-import stripe
 from flask import json
 
 from app import app
@@ -21,51 +20,7 @@ FILE_PATH = 'tests/data/spreadsheet.xlsx'
 def populate_db():
     client = app.test_client()
 
-    # stripe.Plan.create(
-    #     amount=0,
-    #     interval='monthly',
-    #     name='Free Plan',
-    #     currency='usd',
-    #     id='free'
-    # )
-    # stripe.Plan.create(
-    #     amount=2500,
-    #     interval='month',
-    #     name='Monthly Plan',
-    #     currency='usd',
-    #     id='monthly'
-    # )
-    # stripe.Plan.create(
-    #     amount=26700,
-    #     interval='year',
-    #     name='Yearly Plan',
-    #     currency='usd',
-    #     id='yearly'
-    # )
-
-    # token = stripe.Token.create(
-    #     card=dict(
-    #         number=4242424242424242,
-    #         exp_month=1,
-    #         exp_year=2025,
-    #         cvc=333,
-    #         name='TEST NAME'
-    #     )
-    # )
-
     headers = { 'content-type': 'application/json' }
-
-    # response = client.post(
-    #     '/api/stripe',
-    #     data=json.dumps(dict(
-    #         email='test@gmail.com',
-    #         username='test',
-    #         password='test',
-    #         plan='free',
-    #         token_id=token['id']
-    #     )),
-    #     headers=headers
-    # )
 
     response = client.post(
         '/api/users',
