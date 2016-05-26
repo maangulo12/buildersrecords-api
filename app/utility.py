@@ -5,10 +5,6 @@
     ~~~~~~~~~~~~~~
 
     This module implements the utility functions.
-
-    Functions:
-    -parse_invoice_file
-    -parse_ubuildit_file
 """
 
 from datetime import date
