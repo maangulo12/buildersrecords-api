@@ -94,7 +94,7 @@ $ python3 manage.py db upgrade
 #### Python Version
 + Python [3.5.1] (https://www.python.org/downloads/)
 
-#### Extensions
+#### Libraries / Extensions
 + [Flask] (https://pypi.python.org/pypi/Flask): A lightweight Python web framework.
 + [Flask-Bcrypt] (https://pypi.python.org/pypi/Flask-Bcrypt): A Flask extension that provides bcrypt support for hashing passwords.
 + [Flask-Cors] (https://pypi.python.org/pypi/Flask-Cors): A Flask extension for handling Cross Origin Resource Sharing.
