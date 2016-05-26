@@ -11,7 +11,7 @@ Business API for BuildersRecords clients.
     * Flask-Restful
     * Security CORS, routes/endpoints
     * Flask-Migrate / Alembic
-    * Sphinx Documentation
+    * Sphinx Documentation / Swagger
     * Setup.py (look at uber's example)
     * Flask-Testing (nose, unittest, doctest, pytests)
 ```
