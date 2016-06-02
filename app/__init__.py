@@ -19,10 +19,10 @@ from flask.ext.cors import CORS
 # Initializing Flask app
 app = Flask(__name__)
 
-# Configuring app from config file
+# Configuring Flask app from config file
 app.config.from_pyfile('config.py')
 
-# Initializing Flask extensions
+# Initializing Flask app extensions
 db       = SQLAlchemy(app)
 bcrypt   = Bcrypt(app)
 restless = APIManager(app, flask_sqlalchemy_db=db)
