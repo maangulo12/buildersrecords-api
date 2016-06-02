@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    app package
-    ~~~~~~~~~~~
+    app
+    ~~~~~~
 
-    This is the main package of this application.
+    This is the core application module.
 """
 
 from flask import Flask, render_template
@@ -16,13 +16,13 @@ from flask.ext.script import Manager
 from flask.ext.cors import CORS
 
 
-# Flask application object
+# Initializing Flask app
 app = Flask(__name__)
 
-# Configurations
-app.config.from_pyfile('settings.py')
+# Configuring app from config file
+app.config.from_pyfile('config.py')
 
-# Extensions
+# Initializing Flask extensions
 db       = SQLAlchemy(app)
 bcrypt   = Bcrypt(app)
 restless = APIManager(app, flask_sqlalchemy_db=db)
@@ -31,17 +31,17 @@ migrate  = Migrate(app, db)
 manager  = Manager(app)
 cors     = CORS(app)
 
-# Models
+# Importing database models
 from app import models
 
-# REST API
+# Importing API endpoints
 from app.api import auth
 from app.api import utility
 
-# RESTless API
+# Importing API endpoints (RESTless)
 from app.api import models
 
-# Views
+# Initial view
 @app.route('/')
 def index():
     return render_template('index.html')
