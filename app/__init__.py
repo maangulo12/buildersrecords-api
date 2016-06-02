@@ -19,7 +19,7 @@ from flask.ext.cors import CORS
 # Initializing Flask app
 app = Flask(__name__)
 
-# Configuring Flask app from config file
+# Configuring Flask app from config module
 app.config.from_pyfile('config.py')
 
 # Initializing Flask app extensions
