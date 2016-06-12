@@ -46,7 +46,7 @@ def authentication():
         user = User.query.filter_by(email=login).first()
 
     if user and user.check_password(password):
-        token = jwt.encode(dict(user_id=user.id), app.config['AUTH_SECRET'])
+        token = jwt.encode(dict(user_id=user.id), app.config['SECRET_KEY'])
         return make_response(jsonify(token=token), 200)
     else:
         return make_response('Unathenticated', 401)

@@ -35,7 +35,7 @@ def verify_jwt(*args, **kwargs):
     try:
         payload = jwt.decode(
             parts[1],
-            current_app.config['AUTH_SECRET'],
+            current_app.config['SECRET_KEY'],
             options=dict(verify_exp=False)
         )
         user = User.query.filter_by(id=payload['user_id']).first()
