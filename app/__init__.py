@@ -3,7 +3,16 @@
     app
     ~~~~~~
 
-    This is the core application module.
+    A Flask application with several extensions.
+
+    Extensions include:
+    - Flask-Bcrypt : Used for hashing passwords.
+    - Flask-Cors
+    - Flask-Mail
+    - Flask-Migrate
+    - Flask-Restless
+    - Flask-Script
+    - Flask-SQLAlchemy
 """
 
 from flask import Flask, render_template
@@ -23,13 +32,13 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
 # Initializing Flask app extensions
-db       = SQLAlchemy(app)
-bcrypt   = Bcrypt(app)
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
 restless = APIManager(app, flask_sqlalchemy_db=db)
-mail     = Mail(app)
-migrate  = Migrate(app, db)
-manager  = Manager(app)
-cors     = CORS(app)
+mail = Mail(app)
+migrate = Migrate(app, db)
+manager = Manager(app)
+cors = CORS(app)
 
 # Importing database models
 from app import models
@@ -41,7 +50,8 @@ from app.api import utility
 # Importing API endpoints (RESTless)
 from app.api import models
 
-# Initial view
+
 @app.route('/')
 def index():
+    """Render the initial view."""
     return render_template('index.html')
