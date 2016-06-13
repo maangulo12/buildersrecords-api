@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    app
-    ~~~~~~
+    app package
+    ~~~~~~~~~~~
 
     A Flask application with several extensions.
 
@@ -9,7 +9,7 @@
     - Flask-Cors       - Used for handling Cross Origin Resource Sharing (CORS).
     - Flask-Mail       - Used for sending emails.
     - Flask-Migrate    - Used for performing SQLAlchemy database migrations.
-    - Flask-Restless   - Used for easy RESTful API generation.
+    - Flask-Restless   - Used for RESTful API generation.
     - Flask-Script     - Used for running external scripts.
     - Flask-SQLAlchemy - Used for SQLAlchemy support.
 """
