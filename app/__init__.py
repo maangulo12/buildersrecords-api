@@ -44,10 +44,11 @@ from app import models
 from app.api import auth
 from app.api import utility
 
-# Importing API endpoints (RESTless)
+# Importing API endpoints using RESTless
 from app.api import models
 
 
+# Initial route 
 @app.route('/')
 def index():
     """Render the initial view."""
