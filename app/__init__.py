@@ -6,7 +6,6 @@
     A Flask application with several extensions.
 
     Extensions include:
-    - Flask-Bcrypt     - Used for hashing passwords using bcrypt.
     - Flask-Cors       - Used for handling Cross Origin Resource Sharing (CORS).
     - Flask-Mail       - Used for sending emails.
     - Flask-Migrate    - Used for performing SQLAlchemy database migrations.
@@ -17,7 +16,6 @@
 
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from flask.ext.bcrypt import Bcrypt
 from flask.ext.restless import APIManager
 from flask_mail import Mail
 from flask.ext.migrate import Migrate
@@ -33,7 +31,6 @@ app.config.from_pyfile('config.py')
 
 # Initializing Flask app extensions
 db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
 restless = APIManager(app, flask_sqlalchemy_db=db)
 mail = Mail(app)
 migrate = Migrate(app, db)
