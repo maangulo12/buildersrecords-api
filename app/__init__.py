@@ -6,11 +6,11 @@
     A Flask application with several extensions.
 
     Extensions include:
-    - Flask-Cors       - Used for handling Cross Origin Resource Sharing (CORS).
-    - Flask-Mail       - Used for sending emails.
-    - Flask-Migrate    - Used for performing SQLAlchemy database migrations.
-    - Flask-Restless   - Used for RESTful API generation.
-    - Flask-Script     - Used for running external scripts.
+    - Flask-Cors - Used for handling Cross Origin Resource Sharing (CORS).
+    - Flask-Mail - Used for sending emails.
+    - Flask-Migrate - Used for performing SQLAlchemy database migrations.
+    - Flask-Restless - Used for RESTful API generation.
+    - Flask-Script - Used for running external scripts.
     - Flask-SQLAlchemy - Used for SQLAlchemy support.
 """
 
