@@ -1,10 +1,12 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
     app.auth
     ~~~~~~~~
 
-    This module is used for authentication.
+    JSON Web Token (JWT) authentication for this Flask application.
+
+    Using external modules such as:
+    - PyJWT - https://github.com/jpadilla/pyjwt
 """
 
 import jwt
