@@ -2,17 +2,29 @@
 # ----------------------
 # Flask & Extensions
 # ----------------------
+Flask            == 0.11.1  # Web framework
+Flask-Cors       == 2.1.2   # Used for handling Cross Origin Resource Sharing (CORS)
+Flask-Mail       == 0.9.1   # Used for sending emails
 Flask-Migrate    == 1.8.0   # Used for performing SQLAlchemy database migrations
 Flask-Restless   == 0.17.0  # Used for RESTful API generation
+Flask-Script     == 2.0.5   # Used for running external scripts
+Flask-SQLAlchemy == 2.1     # Used for SQLAlchemy support
 
 # ----------------------
 # Utils
 # ----------------------
+bcrypt     == 2.0.0         # Used for hashing passwords
+psycopg2   == 2.6.1         # PostgreSQL database connector
+PyJWT      == 1.4.0         # JSON Web Token for Python
+simplejson == 3.8.2         # JSON encoder/decoder for Python
+xlrd       == 1.0.0         # Used for extracting data from Microsoft Excel spreadsheets
 
 # ----------------------
 # Testing
 # ----------------------
+nose == 1.3.7               # Extends unittest to make testing easier
 
 # ----------------------
 # Deployment
 # ----------------------
+gunicorn == 19.6.0          # WSGI HTTP Server for UNIX
