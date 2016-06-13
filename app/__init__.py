@@ -18,7 +18,7 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask.ext.restless import APIManager
 from flask_mail import Mail
-from flask.ext.migrate import Migrate
+from flask_migrate import Migrate
 from flask.ext.script import Manager
 from flask.ext.cors import CORS
 
