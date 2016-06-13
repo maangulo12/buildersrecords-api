@@ -1,29 +1,29 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
     app.models
-    ~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~
 
     This module implements the database models of this application.
 
         Models          Table Name
-        -User          : users
-        -Project       : projects
-        -Category      : categories
-        -Item          : items
-        -Expenditure   : expenditure
-        -Fund          : funds
-        -Draw          : draws
-        -Subcontractor : subcontractors
+        - User          : users
+        - Project       : projects
+        - Category      : categories
+        - Item          : items
+        - Expenditure   : expenditure
+        - Fund          : funds
+        - Draw          : draws
+        - Subcontractor : subcontractors
 
-    For more information:
-        -Flask-SQLAlchemy : http://flask-sqlalchemy.pocoo.org/2.0/api/
-        -SQLAlchemy       : http://docs.sqlalchemy.org/en/latest/
+    Resources include:
+        - Flask-SQLAlchemy - http://flask-sqlalchemy.pocoo.org/2.1/api/
+        - SQLAlchemy       - http://docs.sqlalchemy.org/en/latest/
 """
 
+import bcrypt
 from datetime import datetime
 
-from app import db, bcrypt
+from app import db
 
 
 class User(db.Model):
@@ -39,11 +39,11 @@ class User(db.Model):
     def __init__(self, email, username, password):
         self.email        = email
         self.username     = username
-        self.password     = bcrypt.generate_password_hash(password)
+        self.password     = bcrypt.hashpw(password, bcrypt.gensalt())
         self.date_created = datetime.now()
 
     def check_password(self, password):
-        return bcrypt.check_password_hash(self.password, password)
+        return bcrypt.hashpw(password, self.password) == self.password
 
 
 class Project(db.Model):
