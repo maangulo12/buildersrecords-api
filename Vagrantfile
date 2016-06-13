@@ -7,10 +7,10 @@ development environments. It is a higher-level wrapper around
 virtualization software such as VirtualBox and VMware, and around
 configuration management software such as Ansible, Chef, and Puppet.
 
-For more info about Vagrant visit:
+For more info about Vagrant
 https://www.vagrantup.com/
 
-To download VirtualBox visit:
+To download VirtualBox
 https://www.virtualbox.org/wiki/Downloads
 
 DOC
