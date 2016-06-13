@@ -48,7 +48,7 @@ from app.api import utility
 from app.api import models
 
 
-# Initial route 
+# Initial route
 @app.route('/')
 def index():
     """Render the initial view."""
