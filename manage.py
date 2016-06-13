@@ -24,7 +24,7 @@
 """
 
 import os
-from flask.ext.migrate import MigrateCommand
+from flask_migrate import MigrateCommand
 
 from app import manager, db
 from tests.sample_data import populate_db
