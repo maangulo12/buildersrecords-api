@@ -1,6 +1,6 @@
 # [BuildersRecords API] (http://api.buildersrecords.com)
 
-Business API for BuildersRecords clients.
+Backend API for BuildersRecords clients.
 
 ## To Do List
 ```
@@ -96,16 +96,16 @@ $ python3 manage.py db upgrade
 
 #### Libraries / Extensions
 + [Flask] (https://pypi.python.org/pypi/Flask): A lightweight Python web framework.
-+ [Flask-Bcrypt] (https://pypi.python.org/pypi/Flask-Bcrypt): A Flask extension that provides bcrypt support for hashing passwords.
 + [Flask-Cors] (https://pypi.python.org/pypi/Flask-Cors): A Flask extension for handling Cross Origin Resource Sharing.
 + [Flask-Mail] (https://pypi.python.org/pypi/Flask-Mail): A Flask extension for sending email messages.
 + [Flask-Migrate] (https://pypi.python.org/pypi/Flask-Migrate): A Flask extension for SQLAlchemy database migrations.
 + [Flask-Restless] (https://pypi.python.org/pypi/Flask-Restless): A Flask extension for easy RESTful API generation.
 + [Flask-Script] (https://pypi.python.org/pypi/Flask-Script): A Flask extension that provides support for command-line tasks.
 + [Flask-SQLAlchemy] (https://pypi.python.org/pypi/Flask-SQLAlchemy): A Flask extension that adds SQLAlchemy support.
++ [bcrypt] (https://github.com/pyca/bcrypt/): Library for hashing passwords.
 + [gunicorn] (https://pypi.python.org/pypi/gunicorn): Python WSGI HTTP Server for UNIX.
 + [nose] (https://pypi.python.org/pypi/nose): Library that extends unittest to make testing easier.
 + [psycopg2] (https://pypi.python.org/pypi/psycopg2): Python-PostgreSQL Database Adapter.
 + [PyJWT] (https://pypi.python.org/pypi/PyJWT): Library for implementing JSON Web Tokens for authentication.
-+ [simplejson] (https://pypi.python.org/pypi/simplejson): Library for JSON encoding and decoding.
-+ [xlrd] (https://pypi.python.org/pypi/xlrd): Library for extracting data from Microsoft Excel spreadsheet files.
++ [simplejson] (https://pypi.python.org/pypi/simplejson): Library for JSON encoding/decoding support.
++ [xlrd] (https://pypi.python.org/pypi/xlrd): Library for extracting data from Microsoft Excel spreadsheets.
