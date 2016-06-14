@@ -33,3 +33,4 @@ MAIL_DEFAULT_SENDER = ('BuildersRecords', MAIL_USERNAME)
 # Database
 SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL',
     'postgresql://postgres:password@localhost:5432/app_db')
+SQLALCHEMY_TRACK_MODIFICATIONS = False
