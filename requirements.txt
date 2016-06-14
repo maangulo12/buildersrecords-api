@@ -2,6 +2,7 @@
 # Flask & Extensions
 # ----------------------
 Flask            == 0.11.1  # Web framework
+Flask-Bcrypt     == 0.6.2   # Used for hashing passwords using bcrypt
 Flask-Cors       == 2.1.2   # Used for handling Cross Origin Resource Sharing (CORS)
 Flask-Mail       == 0.9.1   # Used for sending emails
 Flask-Migrate    == 1.8.0   # Used for performing SQLAlchemy database migrations
@@ -12,7 +13,6 @@ Flask-SQLAlchemy == 2.1     # Used for SQLAlchemy support
 # ----------------------
 # Utils
 # ----------------------
-bcrypt     == 2.0.0         # Used for hashing passwords
 psycopg2   == 2.6.1         # PostgreSQL database connector
 PyJWT      == 1.4.0         # JSON Web Token for Python
 simplejson == 3.8.2         # JSON encoder/decoder for Python
