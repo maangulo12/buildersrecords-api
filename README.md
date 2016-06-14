@@ -101,6 +101,7 @@ $ python3 manage.py db upgrade
 
 #### Libraries / Extensions
 + [Flask] (https://pypi.python.org/pypi/Flask): A lightweight Python web framework.
++ [Flask-Bcrypt] (https://pypi.python.org/pypi/Flask-Bcrypt): A Flask extension for hashing passwords using bcrypt.
 + [Flask-Cors] (https://pypi.python.org/pypi/Flask-Cors): A Flask extension for handling Cross Origin Resource Sharing.
 + [Flask-Mail] (https://pypi.python.org/pypi/Flask-Mail): A Flask extension for sending email messages.
 + [Flask-Migrate] (https://pypi.python.org/pypi/Flask-Migrate): A Flask extension for SQLAlchemy database migrations.
