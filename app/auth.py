@@ -11,7 +11,7 @@
 
 import jwt
 from flask import request, current_app
-from flask.ext.restless import ProcessingException
+from flask_restless import ProcessingException
 
 from app.models import User
 
