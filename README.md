@@ -48,14 +48,19 @@ $ vagrant ssh
 $ cd /vagrant/
 ```
 
-#### 6. Run the app
+#### 6. Setup the database
 >
 ```bash
 $ python3 manage.py recreate
+```
+
+#### 7. Run the app
+>
+```bash
 $ python3 application.py    
 ```
 
-#### 7. Open [http://localhost:4444] (http://localhost:4444)
+#### 8. Open [http://localhost:4444] (http://localhost:4444)
 
 ## PostgreSQL Database
 
