@@ -33,7 +33,7 @@ Vagrant.configure(2) do |config|
     # PostgreSQL (database) port
     config.vm.network :forwarded_port, guest: 5432, host: 5432
     # Open 4444 port of this VM to communicate with 4444 port of this local PC
-    # Flask (application) port
+    # Flask (web application server) port
     config.vm.network :forwarded_port, guest: 4444, host: 4444
 end
 
