@@ -20,10 +20,9 @@
         - SQLAlchemy       - http://docs.sqlalchemy.org/en/latest/
 """
 
-import bcrypt
 from datetime import datetime
 
-from app import db
+from app import db, bcrypt
 
 
 class User(db.Model):
@@ -39,11 +38,11 @@ class User(db.Model):
     def __init__(self, email, username, password):
         self.email        = email
         self.username     = username
-        self.password     = bcrypt.hashpw(password, bcrypt.gensalt())
+        self.password     = bcrypt.generate_password_hash(password)
         self.date_created = datetime.now()
 
     def check_password(self, password):
-        return bcrypt.hashpw(password, self.password) == self.password
+        return bcrypt.check_password_hash(self.password, password)
 
 
 class Project(db.Model):
