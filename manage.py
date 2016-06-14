@@ -4,7 +4,7 @@
     manage.py
     ~~~~~~~~~
 
-    This script is used for doing quick commands in this application.
+    This module is used for doing quick commands in this application.
 
     Commands:
     - create    : Creates all of the tables in the database.
