@@ -7,13 +7,13 @@
     This module is used for doing quick commands in this application.
 
     Commands:
-    - create    : Creates all of the tables in the database.
-    - drop      : Drops all of the tables from the database.
-    - populate  : Populates the database with sample data.
-    - recreate  : Drops, recreates, and populates the tables in the database.
-    - runtests  : Runs tests to this application using nose.
-    - db        : Performs database migrations.
-    - shell     : Runs a Python shell using IPython.
+    - create   : Creates all of the tables in the database.
+    - drop     : Drops all of the tables from the database.
+    - populate : Populates the database with sample data.
+    - recreate : Drops, recreates, and populates the tables in the database.
+    - runtests : Runs tests to this application using nose.
+    - db       : Performs database migrations.
+    - shell    : Runs a Python shell using IPython.
 
     HOW TO USE:
     - Type the following in the command-line
