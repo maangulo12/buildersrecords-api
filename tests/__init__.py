@@ -3,5 +3,5 @@
     tests package
     ~~~~~~~~~~~~~
 
-    This package contains all of the test procedures.
+    This package contains all of the tests.
 """
