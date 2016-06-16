@@ -1,10 +1,9 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
     sample_data
     ~~~~~~~~~~~
 
-    This module is used for populating the database with sample data.
+    This module populates the database with sample data.
 """
 
 import random
@@ -14,176 +13,196 @@ from app import app
 from app.utility import parse_ubuildit_file, parse_invoice_file
 
 
-FILE_PATH = 'tests/data/spreadsheet.xlsx'
+def safe_json(**kwargs):
+    """Creates a safe JSON object"""
+    return json.dumps(dict(kwargs))
+
+
+def get_token(rv):
+    """Returns the token from a response"""
+    d = json.loads(rv.data)
+    return d['token']
 
 
 def populate_db():
-    client = app.test_client()
+    """Populates the database with sample data."""
+    with app.test_client() as c:
+        # Test user login
+        email = 'test@gmail.com'
+        username = 'test'
+        password = 'test'
 
-    headers = { 'content-type': 'application/json' }
+        # HTTP header
+        headers = { 'Content-Type': 'application/json' }
 
-    response = client.post(
-        '/api/users',
-        data=json.dumps(dict(
-            email='test@gmail.com',
-            username='test',
-            password='test'
-        )),
-        headers=headers
-    )
-
-    response = client.post(
-        '/api/auth',
-        data=json.dumps(dict(
-            login='test',
-            password='test'
-        ))
-    )
-
-    data = json.loads(response.data)
-    headers['authorization'] = 'Bearer ' + data['token']
-
-    client.post(
-        '/api/projects',
-        data=json.dumps(dict(
-            name='UBuildIt - Tim & Maritza Messer',
-            address='251 Wizard Way',
-            city='Spring Branch',
-            state='TX',
-            zipcode='78070',
-            home_sq='2000',
-            project_type='ubuildit',
-            user_id=1
-        )),
-        headers=headers
-    )
-
-    file_obj = open(FILE_PATH, 'rb')
-    file_contents = file_obj.read()
-    category_list = parse_ubuildit_file(file_contents)
-
-    for category in category_list:
-        client.post(
-            '/api/categories',
-            data=json.dumps(dict(
-                name=category['category_name'],
-                project_id=1
-            )),
+        # Create test user
+        rv = c.post('/api/users',
+            data=safe_json(
+                email=email,
+                username=username,
+                password=password
+            ),
             headers=headers
         )
 
-        for item in category['item_list']:
-            client.post(
-                '/api/items',
-                data=json.dumps(dict(
-                    name=item['cost_category'],
-                    description=item['description'],
-                    estimated=item['estimated'],
-                    actual=item['actual'],
-                    category_id=category_list.index(category) + 1,
+        # Authenticate test user
+        rv = c.post('/api/auth',
+            data=safe_json(
+                login=username,
+                password=password
+            ),
+            headers=headers
+        )
+
+        # Add token to HTTP header
+        token = get_token(rv)
+        headers['Authorization'] = 'Bearer {}'.format(token)
+
+        # Create a new project
+        rv = c.post('/api/projects',
+            data=safe_json(
+                name='UBuildIt - Tim & Maritza Messer',
+                address='251 Wizard Way',
+                city='Spring Branch',
+                state='TX',
+                zipcode='78070',
+                home_sq='2000',
+                project_type='ubuildit',
+                user_id=1
+            ),
+            headers=headers
+        )
+
+        # Path to sample Excel file
+        path = 'tests/data/spreadsheet.xlsx'
+
+        # Open Excel file
+        f = open(path, 'rb')
+        data = f.read()
+
+        # Parse UbuildIt spreadsheet
+        category_list = parse_ubuildit_file(data)
+
+        # Iterate over the list of categories
+        for category in category_list:
+            # Add category
+            rv = c.post('/api/categories',
+                data=safe_json(
+                    name=category['category_name'],
                     project_id=1
-                )),
+                ),
                 headers=headers
             )
 
+            # Iterate over the list of items
+            for item in category['item_list']:
+                # Add item
+                rv = c.post('/api/items',
+                    data=safe_json(
+                        name=item['cost_category'],
+                        description=item['description'],
+                        estimated=item['estimated'],
+                        actual=item['actual'],
+                        category_id=category_list.index(category) + 1,
+                        project_id=1
+                    ),
+                    headers=headers
+                )
 
-    client.post(
-        '/api/funds',
-        data=json.dumps(dict(
-            name='Messer',
-            loan=False,
-            amount=100000.00,
-            project_id=1
-        ), use_decimal=True),
-        headers=headers
-    )
-    client.post(
-        '/api/funds',
-        data=json.dumps(dict(
-            name='Blanco Loan',
-            loan=True,
-            amount=330000.00,
-            project_id=1
-        ), use_decimal=True),
-        headers=headers
-    )
-
-    client.post(
-        '/api/draws',
-        data=json.dumps(dict(
-            date='09/24/2015',
-            amount=25000.00,
-            fund_id=2
-        ), use_decimal=True),
-        headers=headers
-    )
-    client.post(
-        '/api/draws',
-        data=json.dumps(dict(
-            date='10/01/2015',
-            amount=5000.00,
-            fund_id=2
-        ), use_decimal=True),
-        headers=headers
-    )
-    client.post(
-        '/api/draws',
-        data=json.dumps(dict(
-            date='10/03/2015',
-            amount=7500.00,
-            fund_id=2
-        ), use_decimal=True),
-        headers=headers
-    )
-
-    expenditure_list = parse_invoice_file(FILE_PATH)
-
-    for expenditure in expenditure_list:
-        fund_id = 1
-        if expenditure['notes'] == 'Blanco':
-            fund_id = 2
-
-        client.post(
-            '/api/expenditures',
+        # Add funds
+        rv = c.post('/api/funds',
             data=json.dumps(dict(
-                date=expenditure['date'],
-                company=expenditure['company'],
-                cost=expenditure['cost'],
-                category_id=random.randint(1, 8),
-                item_id=random.randint(1, 110),
-                fund_id=fund_id,
+                name='Messer',
+                loan=False,
+                amount=100000.00,
+                project_id=1
+            ), use_decimal=True),
+            headers=headers
+        )
+        rv = c.post('/api/funds',
+            data=json.dumps(dict(
+                name='Blanco Loan',
+                loan=True,
+                amount=330000.00,
                 project_id=1
             ), use_decimal=True),
             headers=headers
         )
 
-    client.post(
-        '/api/subcontractors',
-        data=json.dumps(dict(
-            company='84 Lumber',
-            person='John Smith',
-            number='210-543-4534',
-            project_id=1
-        )),
-        headers=headers
-    )
-    client.post(
-        '/api/subcontractors',
-        data=json.dumps(dict(
-            company='Ez Company',
-            person='Shawn Tarver',
-            number='512-586-6516',
-            project_id=1
-        )),
-        headers=headers
-    )
-    client.post(
-        '/api/subcontractors',
-        data=json.dumps(dict(
-            company='Coca Cola',
-            person='Mike Jones',
-            number='210-253-5861',
-            project_id=1
-        )),
-        headers=headers
-    )
+        # Add draws
+        rv = c.post('/api/draws',
+            data=json.dumps(dict(
+                date='09/24/2015',
+                amount=25000.00,
+                fund_id=2
+            ), use_decimal=True),
+            headers=headers
+        )
+        rv = c.post('/api/draws',
+            data=json.dumps(dict(
+                date='10/01/2015',
+                amount=5000.00,
+                fund_id=2
+            ), use_decimal=True),
+            headers=headers
+        )
+        rv = c.post('/api/draws',
+            data=json.dumps(dict(
+                date='10/03/2015',
+                amount=7500.00,
+                fund_id=2
+            ), use_decimal=True),
+            headers=headers
+        )
+
+        # Parse invoice spreadsheet
+        expenditure_list = parse_invoice_file(path)
+
+        # Iterate over the list of expenditures
+        for expenditure in expenditure_list:
+            fund_id = 1
+            if expenditure['notes'] == 'Blanco':
+                fund_id = 2
+
+            # Add expenditure
+            rv = c.post('/api/expenditures',
+                data=json.dumps(dict(
+                    date=expenditure['date'],
+                    company=expenditure['company'],
+                    cost=expenditure['cost'],
+                    category_id=random.randint(1, 8),
+                    item_id=random.randint(1, 110),
+                    fund_id=fund_id,
+                    project_id=1
+                ), use_decimal=True),
+                headers=headers
+            )
+
+        # Add subcontractors
+        rv = c.post('/api/subcontractors',
+            data=safe_json(
+                company='84 Lumber',
+                person='John Smith',
+                number='210-543-4534',
+                project_id=1
+            ),
+            headers=headers
+        )
+        rv = c.post('/api/subcontractors',
+            data=safe_json(
+                company='Ez Company',
+                person='Shawn Tarver',
+                number='512-586-6516',
+                project_id=1
+            ),
+            headers=headers
+        )
+        rv = c.post('/api/subcontractors',
+            data=safe_json(
+                company='Coca Cola',
+                person='Mike Jones',
+                number='210-253-5861',
+                project_id=1
+            ),
+            headers=headers
+        )
