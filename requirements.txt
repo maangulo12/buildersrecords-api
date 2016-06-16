@@ -2,6 +2,7 @@
 # Flask & Extensions
 # ----------------------
 Flask            == 0.11.1  # Web framework
+Flask-Admin      == 1.4.2   # Used for creating the admin interface
 Flask-Bcrypt     == 0.6.2   # Used for hashing passwords using bcrypt
 Flask-Cors       == 2.1.2   # Used for handling Cross Origin Resource Sharing (CORS)
 Flask-Mail       == 0.9.1   # Used for sending emails
