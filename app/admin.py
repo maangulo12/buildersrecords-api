@@ -3,7 +3,7 @@
     app.admin
     ~~~~~~~~~
 
-    Admin module for this application.
+    This module implements the Admin interface of this application.
 """
 
 from flask_admin.contrib.sqla import ModelView
@@ -12,7 +12,7 @@ from app import ad, db
 from app.models import User, Project, Category, Item, Expenditure, Fund, Draw, Subcontractor
 
 
-# Add a view for every model
+# Add views for every model
 ad.add_view(ModelView(User, db.session))
 ad.add_view(ModelView(Project, db.session))
 ad.add_view(ModelView(Category, db.session))
