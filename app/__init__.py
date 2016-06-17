@@ -6,6 +6,7 @@
     A Flask application with several extensions.
 
     Extensions include:
+    - Flask-Admin - Used for creating the admin interface.
     - Flask-Bcrypt - Used for hashing passwords using bcrypt.
     - Flask-Cors - Used for handling Cross Origin Resource Sharing (CORS).
     - Flask-Mail - Used for sending emails.
@@ -16,6 +17,7 @@
 """
 
 from flask import Flask, render_template
+from flask_admin import Admin
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from flask_restless import APIManager
@@ -32,6 +34,7 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
 # Initializing Flask app extensions
+ad = Admin(app, template_mode='bootstrap3')
 bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
 restless = APIManager(app, flask_sqlalchemy_db=db)
@@ -42,6 +45,9 @@ cors = CORS(app)
 
 # Importing database models
 from app import models
+
+# Importing admin module
+from app import admin
 
 # Importing API endpoints
 from app.api import auth
