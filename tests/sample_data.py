@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    sample_data
-    ~~~~~~~~~~~
+    tests.sample_data
+    ~~~~~~~~~~~~~~~~~
 
     This module populates the database with sample data.
 """
@@ -19,7 +19,7 @@ def safe_json(**kwargs):
 
 
 def get_token(rv):
-    """Returns the token from a response"""
+    """Returns a token from the authentication response"""
     d = json.loads(rv.data)
     return d['token']
 
@@ -27,7 +27,7 @@ def get_token(rv):
 def populate_db():
     """Populates the database with sample data."""
     with app.test_client() as c:
-        # Test user login
+        # Test user login information
         email = 'test@gmail.com'
         username = 'test'
         password = 'test'
@@ -73,14 +73,14 @@ def populate_db():
             headers=headers
         )
 
-        # Path to sample Excel file
+        # The path to the sample data (Excel file)
         path = 'tests/data/spreadsheet.xlsx'
 
-        # Open Excel file
+        # Open the file
         f = open(path, 'rb')
         data = f.read()
 
-        # Parse UbuildIt spreadsheet
+        # Parse the ubuildit file
         category_list = parse_ubuildit_file(data)
 
         # Iterate over the list of categories
@@ -155,7 +155,7 @@ def populate_db():
             headers=headers
         )
 
-        # Parse invoice spreadsheet
+        # Parse invoice file
         expenditure_list = parse_invoice_file(path)
 
         # Iterate over the list of expenditures
