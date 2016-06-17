@@ -18,7 +18,7 @@
 
 from flask import Flask, render_template
 from flask_admin import Admin
-from flask.ext.bcrypt import Bcrypt
+from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from flask_restless import APIManager
 from flask_mail import Mail
