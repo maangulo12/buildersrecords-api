@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    BuildersRecords API
-    ~~~~~~~~~~~~~~~~~~~~
-    :copyright: (c) 2016
+    runserver.py
+    ~~~~~~~~~~~~
+
+    This module is used for deployment.
 """
 
 from app import app
