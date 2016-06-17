@@ -7,8 +7,8 @@ Flask-Bcrypt     == 0.6.2   # Used for hashing passwords using bcrypt
 Flask-Cors       == 2.1.2   # Used for handling Cross Origin Resource Sharing (CORS)
 Flask-Mail       == 0.9.1   # Used for sending emails
 Flask-Migrate    == 1.8.0   # Used for performing SQLAlchemy database migrations
-Flask-Restless   == 0.17.0  # Used for RESTful API generation
-Flask-Script     == 2.0.5   # Used for running external scripts
+Flask-Restless   == 0.17.0  # Used for easy RESTful API generation
+Flask-Script     == 2.0.5   # Used for adding support for command-line tasks.
 Flask-SQLAlchemy == 2.1     # Used for SQLAlchemy support
 
 # ----------------------
