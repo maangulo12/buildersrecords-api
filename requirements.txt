@@ -16,7 +16,6 @@ Flask-SQLAlchemy == 2.1     # Used for SQLAlchemy support
 # ----------------------
 psycopg2      == 2.6.1         # PostgreSQL database connector
 PyJWT         == 1.4.0         # JSON Web Token for Python
-python-bcrypt == 0.3.1         # Used for hashing passwords using bcrypt
 simplejson    == 3.8.2         # JSON encoder/decoder for Python
 xlrd          == 1.0.0         # Used for extracting data from Microsoft Excel spreadsheets
 
