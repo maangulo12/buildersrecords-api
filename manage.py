@@ -11,7 +11,8 @@
     - drop     : Drops all of the tables from the database.
     - populate : Populates the database with sample data.
     - recreate : Drops, recreates, and populates the tables in the database.
-    - runtests : Runs tests to this application using nose.
+    - runapp   : Runs the application.
+    - runtests : Runs tests using nose.
     - db       : Performs database migrations.
     - shell    : Runs a Python shell using IPython.
 
@@ -23,7 +24,7 @@
 import os
 from flask_migrate import MigrateCommand
 
-from app import manager, db
+from app import app, db, manager
 from tests.sample_data import populate_db
 
 
@@ -58,6 +59,13 @@ def recreate():
     drop()
     create()
     populate()
+
+
+# COMMAND: runapp
+@manager.command
+def runapp():
+    """Runs the application."""
+    app.run(host=app.config['SERVER_HOST'], port=app.config['SERVER_PORT'])
 
 
 # COMMAND: runtests
