@@ -4,14 +4,23 @@ Backend API for BuildersRecords clients.
 
 ## To Do List
 ```
-    * Flask-Mail Send Registration Email / Celery
-    * Utility UBuildit Upload / Check invalid file
-    * Version of API
+    * Finish writing tests.py
+    * Travis CI integration
+
+    * Heroku SSL
+    * Heroku Review Apps
+    * Heroku Upgrade
+
     * Flask-Admin
-    * Flask-Restful
     * Security CORS, routes/endpoints
+    * Flask-Mail Send Registration Email / Celery
     * Flask-Migrate / Alembic
     * Sphinx Documentation / Swagger
+    * JWT authentication
+
+    * Utility UBuildit Upload / Check invalid file
+    * Version of API
+    * Flask-Restful
     * Setup.py (look at uber's example)
     * Flask-Testing (nose, unittest, doctest, pytests)
 ```
