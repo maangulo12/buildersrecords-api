@@ -1,13 +1,13 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
     tests
-    ~~~~~~~~~
+    ~~~~~
 
-    This module is used for testing the backend of this application.
+    This module tests this application.
 
-    -How to use it (type the following in the command-line):
-        python3 manage.py runtests
+    HOW TO USE:
+    - Type the following in the command-line
+      python3 manage.py runtests
 """
 
 import unittest
