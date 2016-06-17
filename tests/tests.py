@@ -23,7 +23,6 @@ class AppTestCase(unittest.TestCase):
     a function that runs at the start of every test and another at the end of
     every test.
     """
-
     def setUp(self):
         """
         This function sets up the tests. It runs at the start of every test.
@@ -37,7 +36,6 @@ class AppTestCase(unittest.TestCase):
         db.drop_all()
         db.create_all()
 
-
     def tearDown(self):
         """
         This function runs at the end of every test. It clears the database at
@@ -48,7 +46,6 @@ class AppTestCase(unittest.TestCase):
         db.drop_all()
         self.app_context.pop()
 
-
     def test_app_exists(self):
         """
         This function checks if the application is running.
@@ -56,7 +53,6 @@ class AppTestCase(unittest.TestCase):
         print('TEST: test_app_exists')
         print(current_app)
         self.assertFalse(current_app is None)
-
 
     def test_home_page(self):
         """
@@ -66,7 +62,6 @@ class AppTestCase(unittest.TestCase):
         rv = self.client.get('/')
         print(rv.status_code)
         self.assertTrue(rv.status_code == 200)
-
 
     # This test is skipped
     @unittest.skip("Skipping test")
@@ -78,7 +73,6 @@ class AppTestCase(unittest.TestCase):
         rv = self.client.get('/admin')
         print(rv.status_code)
         self.assertTrue(rv.status_code == 200)
-
 
     def test_api(self):
         """
