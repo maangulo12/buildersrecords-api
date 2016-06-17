@@ -54,7 +54,7 @@ $ cd /vagrant/
 $ python3 manage.py recreate
 ```
 
-#### 7. Run the app
+#### 7. Run the application
 >
 ```bash
 $ python3 wsgi.py    
