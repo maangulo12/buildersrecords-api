@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-    BuildersRecords API
-    ~~~~~~~~~~~~~~~~~~~~
-    :copyright: (c) 2016
+    wsgi.py
+    ~~~~~~~
 
-    This module runs the application.
+    Run this module to run the application.
 
     HOW TO USE:
     - Type the following in the command-line
-      python3 application.py
+      python3 wsgi.py
 """
 
 from app import app
