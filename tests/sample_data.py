@@ -11,17 +11,7 @@ from flask import json
 
 from app import app
 from app.utility import parse_ubuildit_file, parse_invoice_file
-
-
-def safe_json(**kwargs):
-    """Creates a safe JSON object"""
-    return json.dumps(dict(kwargs))
-
-
-def get_token(rv):
-    """Returns a token from the authentication response"""
-    d = json.loads(rv.data)
-    return d['token']
+from tests.utility import safe_json, get_token
 
 
 def populate_db():
