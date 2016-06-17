@@ -57,7 +57,7 @@ $ python3 manage.py recreate
 #### 7. Run the application
 >
 ```bash
-$ python3 application.py    
+$ python3 manage.py runapp    
 ```
 
 #### 8. Open [http://localhost:4444] (http://localhost:4444)
