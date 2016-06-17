@@ -1,9 +1,5 @@
 # Python
 __pycache__/
-*.py[cod]
-
-# Sphinx
-docs/_build/
 
 # Vagrant
 .vagrant/
