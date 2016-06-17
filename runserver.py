@@ -3,7 +3,7 @@
     runserver.py
     ~~~~~~~~~~~~
 
-    This module is used for deployment.
+    This module is used for deployment of this application.
 """
 
 from app import app
