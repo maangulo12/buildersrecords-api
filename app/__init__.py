@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    app package
-    ~~~~~~~~~~~
+    BuildersRecords API
+    ~~~~~~~~~~~~~~~~~~~
 
     A Flask application with several extensions.
 
