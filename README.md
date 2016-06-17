@@ -9,7 +9,7 @@ Backend API for BuildersRecords clients.
 
     * Heroku SSL
     * Heroku Review Apps
-    * Heroku Upgrade
+    * Heroku Upgrade dynos & db
 
     * Flask-Admin
     * Security CORS, routes/endpoints
