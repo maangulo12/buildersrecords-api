@@ -57,7 +57,7 @@ $ python3 manage.py recreate
 #### 7. Run the application
 >
 ```bash
-$ python3 wsgi.py    
+$ python3 application.py    
 ```
 
 #### 8. Open [http://localhost:4444] (http://localhost:4444)
