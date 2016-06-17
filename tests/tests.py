@@ -84,9 +84,11 @@ class AppTestCase(unittest.TestCase):
         """
         This function tests the API (endpoints) of this application.
         """
+        # Start of the test
         print('TEST: test_api')
         headers = { 'Content-Type': 'application/json' }
 
+        # Check if email exists
         print('POST /api/utility/email')
         rv = self.client.post('/api/utility/email',
             data=safe_json(email='runtests@gmail.com'),
@@ -95,6 +97,7 @@ class AppTestCase(unittest.TestCase):
         print(rv.status_code)
         self.assertTrue(rv.status_code == 200)
 
+        # Check if username exists
         print('POST /api/utility/username')
         rv = self.client.post('/api/utility/username',
             data=safe_json(username='runtests'),
@@ -103,6 +106,7 @@ class AppTestCase(unittest.TestCase):
         print(rv.status_code)
         self.assertTrue(rv.status_code == 200)
 
+        # Create a new user
         print('POST /api/users')
         rv = self.client.post('/api/users',
             data=safe_json(
@@ -115,6 +119,7 @@ class AppTestCase(unittest.TestCase):
         print(rv.status_code)
         self.assertTrue(rv.status_code == 201)
 
+        # Check if email exists
         print('POST /api/utility/email (test 2)')
         rv = self.client.post('/api/utility/email',
             data=safe_json(email='runtests@gmail.com'),
@@ -123,6 +128,7 @@ class AppTestCase(unittest.TestCase):
         print(rv.status_code)
         self.assertTrue(rv.status_code == 302)
 
+        # Check if username exists
         print('POST /api/utility/username (test 2)')
         rv = self.client.post('/api/utility/username',
             data=safe_json(username='runtests'),
@@ -131,6 +137,7 @@ class AppTestCase(unittest.TestCase):
         print(rv.status_code)
         self.assertTrue(rv.status_code == 302)
 
+        # Authenticate user
         print('POST /api/auth (authentication)')
         rv = self.client.post('/api/auth',
             data=safe_json(
@@ -142,10 +149,12 @@ class AppTestCase(unittest.TestCase):
         print(rv.status_code)
         self.assertTrue(rv.status_code == 200)
 
+        # Add token to HTTP header
         print('STORE JSON Web Token')
         token = get_token(rv)
         headers['Authorization'] = 'Bearer {}'.format(token)
 
+        # Check if the user exists.
         print('GET /api/users/1')
         rv = self.client.get('/api/users/1',
             headers=headers
