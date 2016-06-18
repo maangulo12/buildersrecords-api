@@ -25,7 +25,7 @@ import os
 from flask_migrate import MigrateCommand
 
 from app import app, db, manager
-from tests.sample_data import populate_db
+from tests.test_data import populate_db
 
 
 # COMMAND: create

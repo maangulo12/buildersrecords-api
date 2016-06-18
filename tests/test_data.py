@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    tests.sample_data
+    tests.test_data
     ~~~~~~~~~~~~~~~~~
 
-    This module populates the database with sample data.
+    This module populates the database with test data.
 """
 
 import random
