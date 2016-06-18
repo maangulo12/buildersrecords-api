@@ -3,7 +3,7 @@
     app.admin
     ~~~~~~~~~
 
-    This module implements the Admin interface of this application.
+    This module implements the admin interface of this application.
 """
 
 from flask_admin.contrib.sqla import ModelView
