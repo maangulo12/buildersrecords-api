@@ -3,10 +3,7 @@
     app.config
     ~~~~~~~~~~
 
-    Flask application configuration module.
-
-    Flask documentation on configuration handling.
-    http://flask.pocoo.org/docs/0.11/config/
+    This module contains the configurations of this application.
 """
 
 import os
