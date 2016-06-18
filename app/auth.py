@@ -3,10 +3,10 @@
     app.auth
     ~~~~~~~~
 
-    JSON Web Token (JWT) authentication support for this Flask application.
+    JSON Web Token (JWT) authentication support for this application.
 
-    Using external modules such as:
-    - PyJWT - https://github.com/jpadilla/pyjwt
+    Documentation:
+    - PyJWT: https://github.com/jpadilla/pyjwt
 """
 
 import jwt
@@ -17,7 +17,7 @@ from app.models import User
 
 
 def verify_jwt(*args, **kwargs):
-    """Verifies JSON Web Token."""
+    """Verifies the JSON Web Token."""
     auth = request.headers.get('Authorization', None)
 
     if auth is None:
