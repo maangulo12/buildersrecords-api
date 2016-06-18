@@ -16,8 +16,8 @@
         - Subcontractor : subcontractors
 
     Documentation:
-        - Flask-SQLAlchemy - http://flask-sqlalchemy.pocoo.org/2.1/api/
-        - SQLAlchemy       - http://docs.sqlalchemy.org/en/latest/
+        - Flask-SQLAlchemy : http://flask-sqlalchemy.pocoo.org/2.1/api/
+        - SQLAlchemy       : http://docs.sqlalchemy.org/en/latest/
 """
 
 from datetime import datetime
