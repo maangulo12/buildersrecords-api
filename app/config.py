@@ -3,7 +3,7 @@
     app.config
     ~~~~~~~~~~
 
-    This module contains the configurations of this application.
+    This module used to configure this application.
 """
 
 import os
