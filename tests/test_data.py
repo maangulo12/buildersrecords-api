@@ -11,11 +11,11 @@ from flask import json
 
 from app import app
 from app.utility import parse_ubuildit_file, parse_invoice_file
-from tests.utility import safe_json, get_token
+from tests.test_utils import safe_json, get_token
 
 
 def populate_db():
-    """Populates the database with sample data."""
+    """Populates the database with test data."""
     with app.test_client() as c:
         # Test user login information
         email = 'test@gmail.com'

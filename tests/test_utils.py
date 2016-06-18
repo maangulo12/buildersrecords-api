@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    tests.utility
-    ~~~~~~~~~~~~~
+    tests.test_utils
+    ~~~~~~~~~~~~~~~~
 
     This module contains utility functions for testing.
 """

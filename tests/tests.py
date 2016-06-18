@@ -14,7 +14,7 @@ import unittest
 from flask import current_app, json
 
 from app import app, db
-from tests.utility import safe_json, get_token
+from tests.test_utils import safe_json, get_token
 
 
 class AppTestCase(unittest.TestCase):
