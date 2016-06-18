@@ -17,7 +17,7 @@ from app.models import User
 
 
 def verify_jwt(*args, **kwargs):
-    """Verifies the JSON Web Token."""
+    """Verifies the JWT from the HTTP header of the request."""
     auth = request.headers.get('Authorization', None)
 
     if auth is None:
