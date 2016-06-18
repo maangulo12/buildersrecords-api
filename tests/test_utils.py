@@ -3,7 +3,7 @@
     tests.test_utils
     ~~~~~~~~~~~~~~~~
 
-    This module contains utility functions for testing.
+    This module contains the utility functions for testing.
 """
 
 from flask import json
