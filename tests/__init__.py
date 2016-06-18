@@ -3,5 +3,5 @@
     tests package
     ~~~~~~~~~~~~~
 
-    This package contains all of the tests for this application.
+    This package contains the tests for this application.
 """
