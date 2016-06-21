@@ -29,6 +29,7 @@ from flask_cors import CORS
 
 # Initializing Flask app
 app = Flask(__name__)
+print(__name___)
 
 # Configuring Flask app from config module
 app.config.from_pyfile('config.py')
