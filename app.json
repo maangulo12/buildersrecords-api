@@ -1,0 +1,47 @@
+{
+  "name": "buildersrecords-api",
+  "description": "Backend API for BuildersRecords clients",
+  "scripts": {
+  },
+  "env": {
+    "DEBUG": {
+      "required": true
+    },
+    "MAIL_PASSWORD": {
+      "required": true
+    },
+    "MAIL_USERNAME": {
+      "required": true
+    },
+    "SECRET_KEY": {
+      "required": true
+    },
+    "SERVER_HOST": {
+      "required": true
+    },
+    "SERVER_POST": {
+      "required": true
+    },
+    "STRIPE_API_KEY": {
+      "required": true
+    },
+    "TESTING": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "herokuconnect",
+    "heroku-postgresql",
+    "scheduler"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
