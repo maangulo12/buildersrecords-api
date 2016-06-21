@@ -50,11 +50,9 @@ from app import models
 from app import admin
 
 # Importing API endpoints
-from app.api import auth
-from app.api import utility
-
-# Importing API endpoints using RESTless
-from app.api import models
+from app.api.v1 import api_auth
+from app.api.v1 import api_models
+from app.api.v1 import api_utility
 
 
 # Initial route
