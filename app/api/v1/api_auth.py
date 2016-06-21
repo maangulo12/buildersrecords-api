@@ -1,13 +1,12 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-    app.api.auth
-    ~~~~~~~~~~~~
+    app.api.api_auth
+    ~~~~~~~~~~~~~~~~
 
-    This API is used for authentication.
+    This module contains the API v1 endpoints for authentication.
 
-    Current endpoints:
-        -auth : /api/auth (POST)
+    Endpoints:
+        - Auth : /api/auth (POST)
 """
 
 import jwt
@@ -23,7 +22,7 @@ URL = '/api/auth'
 @app.route(URL, methods=['POST'])
 def authentication():
     """
-    Authenticates a user and sends a token.
+    Authenticates a user and sends a JWT.
 
     Request Example:
     POST
@@ -49,4 +48,4 @@ def authentication():
         token = jwt.encode(dict(user_id=user.id), app.config['SECRET_KEY'])
         return make_response(jsonify(token=token), 200)
     else:
-        return make_response('Unathenticated', 401)
+        return make_response('Unauthenticated', 401)
