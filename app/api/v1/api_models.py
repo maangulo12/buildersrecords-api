@@ -1,20 +1,19 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-    app.api.models
-    ~~~~~~~~~~~~~~
+    app.api.api_models
+    ~~~~~~~~~~~~~~~~~~
 
-    This module is used for accessing the models.
+    This module contains the API v1 endpoints for the database models.
 
-    Current APIs:
-        -Users          : /api/users          (GET, POST, DELETE, PUT)
-        -Projects       : /api/projects       (GET, POST, DELETE, PUT)
-        -Categories     : /api/categories     (GET, POST, DELETE, PUT)
-        -Items          : /api/items          (GET, POST, DELETE, PUT)
-        -Expenditures   : /api/expenditures   (GET, POST, DELETE, PUT)
-        -Funds          : /api/funds          (GET, POST, DELETE, PUT)
-        -Draws          : /api/draws          (GET, POST, DELETE, PUT)
-        -Subcontractors : /api/subcontractors (GET, POST, DELETE, PUT)
+    Endpoints:
+        - Users          : /api/users          (GET, POST, DELETE, PUT)
+        - Projects       : /api/projects       (GET, POST, DELETE, PUT)
+        - Categories     : /api/categories     (GET, POST, DELETE, PUT)
+        - Items          : /api/items          (GET, POST, DELETE, PUT)
+        - Expenditures   : /api/expenditures   (GET, POST, DELETE, PUT)
+        - Funds          : /api/funds          (GET, POST, DELETE, PUT)
+        - Draws          : /api/draws          (GET, POST, DELETE, PUT)
+        - Subcontractors : /api/subcontractors (GET, POST, DELETE, PUT)
 """
 
 from app import restless
@@ -25,7 +24,7 @@ from app.models import User, Project, Category, Item, Expenditure, Fund, Draw, S
 URL = '/api'
 
 
-# Users: /api/users
+# ENDPOINT: /api/users
 # POST request is unprotected
 restless.create_api(User,
                        methods          = ['GET', 'POST', 'DELETE', 'PUT'],
@@ -40,7 +39,7 @@ restless.create_api(User,
                                           DELETE_SINGLE = [verify_jwt],
                                           DELETE_MANY   = [verify_jwt]))
 
-# Projects: /api/projects
+# ENDPOINT: /api/projects
 restless.create_api(Project,
                        methods          = ['GET', 'POST', 'DELETE', 'PUT'],
                        url_prefix       = URL,
@@ -55,7 +54,7 @@ restless.create_api(Project,
                                           DELETE_SINGLE = [verify_jwt],
                                           DELETE_MANY   = [verify_jwt]))
 
-# Categories: /api/categories
+# ENDPOINT: /api/categories
 restless.create_api(Category,
                        methods          = ['GET', 'POST', 'DELETE', 'PUT'],
                        url_prefix       = URL,
@@ -70,7 +69,7 @@ restless.create_api(Category,
                                           DELETE_SINGLE = [verify_jwt],
                                           DELETE_MANY   = [verify_jwt]))
 
-# Items: /api/items
+# ENDPOINT: /api/items
 restless.create_api(Item,
                        methods           = ['GET', 'POST', 'DELETE', 'PUT'],
                        url_prefix        = URL,
@@ -86,7 +85,7 @@ restless.create_api(Item,
                                            DELETE_SINGLE = [verify_jwt],
                                            DELETE_MANY   = [verify_jwt]))
 
-# Expenditures: /api/expenditures
+# ENDPOINT: /api/expenditures
 restless.create_api(Expenditure,
                        methods           = ['GET', 'POST', 'DELETE', 'PUT'],
                        url_prefix        = URL,
@@ -102,7 +101,7 @@ restless.create_api(Expenditure,
                                            DELETE_SINGLE = [verify_jwt],
                                            DELETE_MANY   = [verify_jwt]))
 
-# Funds: /api/funds
+# ENDPOINT: /api/funds
 restless.create_api(Fund,
                        methods          = ['GET', 'POST', 'DELETE', 'PUT'],
                        url_prefix       = URL,
@@ -117,7 +116,7 @@ restless.create_api(Fund,
                                           DELETE_SINGLE = [verify_jwt],
                                           DELETE_MANY   = [verify_jwt]))
 
-# Draws: /api/draws
+# ENDPOINT: /api/draws
 restless.create_api(Draw,
                        methods           = ['GET', 'POST', 'DELETE', 'PUT'],
                        url_prefix        = URL,
@@ -133,8 +132,7 @@ restless.create_api(Draw,
                                            DELETE_SINGLE = [verify_jwt],
                                            DELETE_MANY   = [verify_jwt]))
 
-
-# Subcontractors: /api/subcontractors
+# ENDPOINT: /api/subcontractors
 restless.create_api(Subcontractor,
                        methods           = ['GET', 'POST', 'DELETE', 'PUT'],
                        url_prefix        = URL,
