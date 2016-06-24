@@ -4,8 +4,7 @@ Backend API for BuildersRecords clients.
 
 ## To Do List
 ```
-    * Heroku Review Apps
-    * Heroku SSL / Upgrade Dynos / Upgrade PostgreSQL
+    * Heroku SSL/Dynos/Database
     * Flask-Admin
     * Flask-CORS, routes/endpoints protection
     * Flask-Mail Send Registration Email / Celery / Testing Emails
