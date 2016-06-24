@@ -3,7 +3,7 @@
     runserver.py
     ~~~~~~~~~~~~
 
-    This module is used for deployment of this application.
+    This module is used for deploying the application to Heroku.
 """
 
 from app import app
