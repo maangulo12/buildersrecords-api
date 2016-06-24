@@ -65,7 +65,7 @@ def recreate():
 @manager.command
 def runapp():
     """Runs the application."""
-    app.run(host=app.config['SERVER_HOST'], port=app.config['SERVER_PORT'])
+    app.run(host='0.0.0.0', port=4444)
 
 
 # COMMAND: runtests
