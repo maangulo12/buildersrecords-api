@@ -13,9 +13,11 @@ Backend API for BuildersRecords clients.
     * Heroku Environ Variables
 
     * Flask-Admin
-    * Security CORS, routes/endpoints protection
-    * Flask-Mail Send Registration Email / Celery
+    * Flask-CORS, routes/endpoints protection
+    * Flask-Mail Send Registration Email / Celery / Testing Emails
+    * Flask-SQLAlchemy
     * Flask-Migrate / Alembic
+    * Flask-Restless
     * Sphinx Documentation / Swagger
     * JWT authentication
 
@@ -119,7 +121,6 @@ $ python3 manage.py db upgrade
 + [Flask-Restless] (https://pypi.python.org/pypi/Flask-Restless): A Flask extension for easy RESTful API generation.
 + [Flask-Script] (https://pypi.python.org/pypi/Flask-Script): A Flask extension that provides support for command-line tasks.
 + [Flask-SQLAlchemy] (https://pypi.python.org/pypi/Flask-SQLAlchemy): A Flask extension that adds SQLAlchemy support.
-+ [bcrypt] (https://github.com/pyca/bcrypt/): Library for hashing passwords.
 + [gunicorn] (https://pypi.python.org/pypi/gunicorn): Python WSGI HTTP Server for UNIX.
 + [nose] (https://pypi.python.org/pypi/nose): Library that extends unittest to make testing easier.
 + [psycopg2] (https://pypi.python.org/pypi/psycopg2): Python-PostgreSQL Database Adapter.
