@@ -6,14 +6,14 @@
     A Flask application with several extensions.
 
     Extensions include:
-    - Flask-Admin: Used for creating the admin interface.
-    - Flask-Bcrypt: Used for hashing passwords using bcrypt.
-    - Flask-Cors: Used for handling Cross Origin Resource Sharing (CORS).
-    - Flask-Mail: Used for sending emails.
-    - Flask-Migrate: Used for performing SQLAlchemy database migrations.
-    - Flask-Restless: Used for easy RESTful API generation.
-    - Flask-Script: Used for adding support for command-line tasks.
-    - Flask-SQLAlchemy: Used for SQLAlchemy support.
+    - Flask-Admin      : Used for creating the admin interface.
+    - Flask-Bcrypt     : Used for hashing passwords using bcrypt.
+    - Flask-Cors       : Used for handling Cross Origin Resource Sharing (CORS).
+    - Flask-Mail       : Used for sending emails.
+    - Flask-Migrate    : Used for performing SQLAlchemy database migrations.
+    - Flask-Restless   : Used for easy RESTful API generation.
+    - Flask-Script     : Used for adding support for command-line tasks.
+    - Flask-SQLAlchemy : Used for SQLAlchemy support.
 """
 
 from flask import Flask, render_template
