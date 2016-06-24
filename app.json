@@ -36,7 +36,6 @@
       "required": true
     }
   },
-  "image": "heroku/ruby",
   "addons": [
     "heroku-postgresql:hobby-dev",
     "deployhooks:email"
