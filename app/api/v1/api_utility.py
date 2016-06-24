@@ -1,15 +1,14 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-    app.api.utility
-    ~~~~~~~~~~~~~~~
+    app.api.api_utility
+    ~~~~~~~~~~~~~~~~~~~
 
-    This API contains utility endpoints.
+    This module contains several utility API v1 endpoints.
 
-    Current endpoints:
-        -email          : /api/utility/email    (POST)
-        -username       : /api/utility/username (POST)
-        -ubuildit/file  : /api/utility/ubuildit (POST)
+    Endpoints:
+        - Email    : /api/utility/email    (POST)
+        - Username : /api/utility/username (POST)
+        - UBuildIt : /api/utility/ubuildit (POST)
 """
 
 from flask import request, make_response
@@ -74,7 +73,6 @@ def verify_username():
         return make_response('Username already exists', 302)
 
 
-# Need route protection
 @app.route(URL + '/ubuildit', methods=['POST'])
 def parse_file():
     """

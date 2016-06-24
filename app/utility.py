@@ -1,14 +1,9 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
     app.utility
-    ~~~~~~~~~~~~~~
+    ~~~~~~~~~~~
 
-    This module implements the utility functions.
-
-    Functions:
-    -parse_invoice_file
-    -parse_ubuildit_file
+    This module implements several utility functions for this application.
 """
 
 from datetime import date
@@ -26,10 +21,7 @@ def parse_invoice_file(path):
     expenditure_list = []
 
     for i in range(2, 140):
-        cells = ws.row_slice(rowx=i,
-                             start_colx=1,
-                             end_colx=6)
-
+        cells = ws.row_slice(rowx=i, start_colx=1, end_colx=6)
         date_tuple = xldate_as_tuple(cells[0].value, 0)
         year, month, day, hour, minutes, seconds = date_tuple
 
@@ -46,7 +38,7 @@ def parse_invoice_file(path):
 def parse_ubuildit_file(data):
     """
     Parses the UBuildIt Excel file.
-        :param key: AWS bucket key
+        :param data: UBuildit Excel file data.
         :return:
             category_list: {
                 'category_name:' 'name_of_category',

@@ -7,15 +7,15 @@ development environments. It is a higher-level wrapper around
 virtualization software such as VirtualBox and VMware, and around
 configuration management software such as Ansible, Chef, and Puppet.
 
-For more info about Vagrant visit:
+For more info about Vagrant
 https://www.vagrantup.com/
 
-To download VirtualBox visit:
+To download VirtualBox
 https://www.virtualbox.org/wiki/Downloads
 
 DOC
 
-# This is the name of this virtual machine (VM)
+# The name of this virtual machine (VM)
 $environ = 'buildersrecords-api'
 
 Vagrant.configure(2) do |config|
@@ -29,15 +29,15 @@ Vagrant.configure(2) do |config|
     end
     # Run this shell script
     config.vm.provision :shell, inline: $shell
-    # Open 5432 port of this VM to communicate with 5432 port of my local PC
+    # Open 5432 port of this VM to communicate with 5432 port of this local PC
     # PostgreSQL (database) port
     config.vm.network :forwarded_port, guest: 5432, host: 5432
-    # Open 4444 port of this VM to communicate with 4444 port of my local PC
-    # Flask (application) port
+    # Open 4444 port of this VM to communicate with 4444 port of this local PC
+    # Flask (web application server) port
     config.vm.network :forwarded_port, guest: 4444, host: 4444
 end
 
-# This is the shell script that configures this VM
+# Shell script configuration
 $shell = <<-CONTENTS
 
 sudo -s

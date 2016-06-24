@@ -1,68 +1,62 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-    app package
-    ~~~~~~~~~~~
-    :copyright: (c) 2016
+    BuildersRecords API
+    ~~~~~~~~~~~~~~~~~~~
 
-    This is the core package of this application.
+    A Flask application with several extensions.
 
-    Flask and extensions:
-        -Flask            : http://flask.pocoo.org/
-        -Flask-SQLAlchemy : http://flask-sqlalchemy.pocoo.org/2.1/
-        -Flask-Bcrypt     : http://flask-bcrypt.readthedocs.org/en/latest/
-        -Flask-Restful    : http://flask-restful.readthedocs.org/en/0.3.5/
-        -Flask-Restless   : http://flask-restless.readthedocs.org/en/latest/
-        -Flask-Mail       : http://pythonhosted.org/Flask-Mail/
-        -Flask-Migrate    : http://flask-migrate.readthedocs.org/en/latest/
-        -Flask-Script     : http://flask-script.readthedocs.org/en/latest/
-        -Flask-Cors       : http://flask-cors.readthedocs.org/en/latest/
-        -Stripe           : https://stripe.com/docs/api/python
+    Extensions include:
+    - Flask-Admin: Used for creating the admin interface.
+    - Flask-Bcrypt: Used for hashing passwords using bcrypt.
+    - Flask-Cors: Used for handling Cross Origin Resource Sharing (CORS).
+    - Flask-Mail: Used for sending emails.
+    - Flask-Migrate: Used for performing SQLAlchemy database migrations.
+    - Flask-Restless: Used for easy RESTful API generation.
+    - Flask-Script: Used for adding support for command-line tasks.
+    - Flask-SQLAlchemy: Used for SQLAlchemy support.
 """
 
-import stripe
 from flask import Flask, render_template
+from flask_admin import Admin
+from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
-from flask.ext.bcrypt import Bcrypt
-from flask_restful import Api
-from flask.ext.restless import APIManager
+from flask_restless import APIManager
 from flask_mail import Mail
-from flask.ext.migrate import Migrate
-from flask.ext.script import Manager
-from flask.ext.cors import CORS
+from flask_migrate import Migrate
+from flask_script import Manager
+from flask_cors import CORS
 
 
-# Create Flask application
-app = Flask(__name__)
+# Initializing Flask app
+app = Flask('app')
 
-# Configurations
-app.config.from_pyfile('settings.py')
+# Configuring Flask app from config module
+app.config.from_pyfile('config.py')
 
-# Stripe
-stripe.api_key = app.config['STRIPE_API_KEY']
-
-# Extensions
-db       = SQLAlchemy(app)
-bcrypt   = Bcrypt(app)
-api      = Api(app)
+# Initializing Flask app extensions
+ad = Admin(app, template_mode='bootstrap3')
+bcrypt = Bcrypt(app)
+db = SQLAlchemy(app)
 restless = APIManager(app, flask_sqlalchemy_db=db)
-mail     = Mail(app)
-migrate  = Migrate(app, db)
-manager  = Manager(app)
-cors     = CORS(app)
+mail = Mail(app)
+migrate = Migrate(app, db)
+manager = Manager(app)
+cors = CORS(app)
 
-# Models
+# Importing database models
 from app import models
 
-# RESTful API
-from app.api import auth
-from app.api import stripe
-from app.api import utility
+# Importing admin module
+from app import admin
 
-# RESTless API
-from app.api import models
+# Importing API endpoints
+from app.api.v1 import api_auth
+from app.api.v1 import api_models
+from app.api.v1 import api_utility
 
-# Views
+
+# Initial route
 @app.route('/')
 def index():
+    """Render the initial view."""
     return render_template('index.html')
