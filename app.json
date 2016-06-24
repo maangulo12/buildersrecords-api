@@ -1,6 +1,7 @@
 {
   "name": "BuildersRecords API",
   "description": "Backend API for BuildersRecords clients.",
+  "keywords": ["python", "flask", "buildersrecords"],
   "website": "http://api.buildersrecords.com",
   "repository": "https://github.com/maangulo12/buildersrecords-api",
   "success_url": "/",
@@ -36,6 +37,7 @@
       "required": true
     }
   },
+  "image": "heroku/python",
   "addons": [
     "heroku-postgresql:hobby-dev",
     "deployhooks:email"
