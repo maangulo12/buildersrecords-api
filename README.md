@@ -4,14 +4,8 @@ Backend API for BuildersRecords clients.
 
 ## To Do List
 ```
-    * Write more tests.py
-    * Travis CI integration
-
-    * Heroku SSL
     * Heroku Review Apps
-    * Heroku Upgrade dynos & db
-    * Heroku Environ Variables
-
+    * Heroku SSL / Upgrade Dynos / Upgrade PostgreSQL
     * Flask-Admin
     * Flask-CORS, routes/endpoints protection
     * Flask-Mail Send Registration Email / Celery / Testing Emails
@@ -19,8 +13,9 @@ Backend API for BuildersRecords clients.
     * Flask-Migrate / Alembic
     * Flask-Restless
     * Sphinx Documentation / Swagger
-    * JWT authentication
-
+    * JWT authentication    
+    * Write more tests.py
+    * Travis CI integration
     * Utility UBuildit Upload / Check invalid file
     * Version of API
     * Flask-Restful
