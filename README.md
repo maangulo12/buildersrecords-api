@@ -6,6 +6,7 @@ REST API for BuildersRecords clients.
 ```
     * Sphinx Documentation / Swagger
     * Flask-Admin
+    * Flask-Security
     * Heroku SSL/Dynos/Database
     * Travis CI
     * Flask-CORS, routes/endpoints protection
@@ -13,7 +14,7 @@ REST API for BuildersRecords clients.
     * Flask-SQLAlchemy
     * Flask-Migrate / Alembic
     * Flask-Restless
-    * JWT authentication    
+    * JWT authentication
     * Write more tests.py
     * Utility UBuildit Upload / Check invalid file
     * Version of API
@@ -24,49 +25,54 @@ REST API for BuildersRecords clients.
 
 ## To Contribute
 
-#### 1. Download required software
+#### Step 1: Download the required software
 
 + [VirtualBox] (https://www.virtualbox.org/wiki/Downloads)
 + [Vagrant] (https://www.vagrantup.com/downloads.html)
 
-#### 2. Clone the project
+#### Step 2: Clone the project
 >
 ```bash
 $ git clone git@github.com:maangulo12/buildersrecords-api.git
+```
+
+#### Step 3: Change directory into the cloned project
+>
+```bash
 $ cd buildersrecords-api
 ```
 
-#### 3. Run vagrant
+#### Step 4: Run vagrant
 >
 ```bash
 $ vagrant up    
 ```
 
-#### 4. SSH into the virtual machine
+#### Step 5: SSH into the virtual machine
 >
 ```bash
 $ vagrant ssh
 ```
 
-#### 5. CD into the vagrant folder
+#### Step 6: CD into the vagrant folder
 >
 ```bash
 $ cd /vagrant/
 ```
 
-#### 6. Setup the database
+#### Step 7: Setup the database
 >
 ```bash
 $ python3 manage.py recreate
 ```
 
-#### 7. Run the application
+#### Step 8: Run the application
 >
 ```bash
 $ python3 manage.py runapp    
 ```
 
-#### 8. Open [http://localhost:4444] (http://localhost:4444)
+#### Step 9: Open [http://localhost:4444] (http://localhost:4444)
 
 ## PostgreSQL Database
 
