@@ -19,7 +19,6 @@ MAIL_USE_SSL        = os.environ.get('MAIL_USE_SSL', False)
 MAIL_USERNAME       = os.environ.get('MAIL_USERNAME', 'email@address.com')
 MAIL_PASSWORD       = os.environ.get('MAIL_PASSWORD' 'password')
 MAIL_DEFAULT_SENDER = ('BuildersRecords', MAIL_USERNAME)
-MAIL_DEBUG          = False
 
 # Database
 SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL',
