@@ -30,6 +30,7 @@ class AppTestCase(unittest.TestCase):
         every test.
         """
         print('Setting up...')
+        app.config['TESTING'] = True
         self.app_context = app.app_context()
         self.app_context.push()
         self.client = app.test_client()
