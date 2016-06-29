@@ -1,6 +1,6 @@
 {
   "name": "buildersrecords-api",
-  "description": "REST API for BuildersRecords clients.",
+  "description": "REST API for BuildersRecords clients",
   "keywords": ["python", "flask", "buildersrecords"],
   "website": "http://api.buildersrecords.com",
   "repository": "https://github.com/maangulo12/buildersrecords-api",
@@ -9,9 +9,6 @@
   },
   "env": {
     "DATABASE_URL": {
-      "required": true
-    },
-    "DEBUG": {
       "required": true
     },
     "MAIL_PASSWORD": {
@@ -31,14 +28,10 @@
     },
     "SECRET_KEY": {
       "required": true
-    },
-    "TESTING": {
-      "required": true
     }
   },
   "addons": [
-    "heroku-postgresql:hobby-dev",
-    "deployhooks:email"
+    "heroku-postgresql:hobby-dev"
   ],
   "buildpacks": [
     {
