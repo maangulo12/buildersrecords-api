@@ -11,8 +11,6 @@ import os
 
 # Flask
 SECRET_KEY = os.environ.get('SECRET_KEY', 'secret_key')
-DEBUG      = os.environ.get('DEBUG', True)
-TESTING    = os.environ.get('TESTING', True)
 
 # Email
 MAIL_SERVER         = os.environ.get('MAIL_SERVER', 'localhost')
