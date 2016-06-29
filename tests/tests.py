@@ -11,7 +11,7 @@
 """
 
 import unittest
-from flask import current_app, json
+from flask import current_app
 
 from app import app, db
 from tests.test_utils import safe_json, get_token
