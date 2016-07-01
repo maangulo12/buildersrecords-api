@@ -1,6 +1,6 @@
 {
   "name": "buildersrecords-api",
-  "description": "REST API for BuildersRecords clients",
+  "description": "BuildersRecords REST API",
   "keywords": ["python", "flask", "buildersrecords"],
   "website": "http://api.buildersrecords.com",
   "repository": "https://github.com/maangulo12/buildersrecords-api",
