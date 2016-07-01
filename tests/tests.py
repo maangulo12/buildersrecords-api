@@ -11,7 +11,7 @@
 """
 
 import unittest
-from flask import current_app, json
+from flask import current_app
 
 from app import app, db
 from tests.test_utils import safe_json, get_token
@@ -30,6 +30,7 @@ class AppTestCase(unittest.TestCase):
         every test.
         """
         print('Setting up...')
+        app.config['TESTING'] = True
         self.app_context = app.app_context()
         self.app_context.push()
         self.client = app.test_client()

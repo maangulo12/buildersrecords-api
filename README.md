@@ -1,6 +1,6 @@
 # [BuildersRecords API] (http://api.buildersrecords.com)
 
-This is a REST API with an admin interface for BuildersRecords clients.
+BuildersRecords REST API for client apps.
 
 ## To Do List
 ```
